@@ -1,10 +1,28 @@
-Lab 1: Building an XC Node
+Lab 1: Building an XC Node (CE)
 ==================================
 
-Previously you should have received an email to access the shared Distributed Cloud Lab Environment.
+Objective:
 
-Start by logging into Distributed Cloud Console.  You should have previously received an email to create an account.
+*Deploy a Customer Edge mesh node from the UDF lab.
 
+*Explore and become familiar with the Distributed Cloud console.
+
+*Use tools in the console to help troubleshoot connectivity problems.
+
+test
+
+.. NOTE:: You should have received and email from F5 Distributed Cloud User Management <no-reply@volterratmails.io> with the content as follows
+
+.. image:: ./images/updatepasswd.png
+   
+If you have not already, you should click on Update Password, and change your credentials.  Ensure you adhere to the password strength restrictions and make a mental note of these credentials as you will need them. 
+Updating your credentials will look as follows:
+
+.. image:: ./images/updatepasswd2.png
+    
+You will also receive an email from the previously mentioned system address stating that your credentials have been changed that views as follows
+
+.. image:: ./images/upasswdupdate.png
 
 #. Please log into your assigned Distributed Cloud tenant. https://f5-xc-lab-mcn.console.ves.volterra.io 
 
