@@ -3,12 +3,14 @@ Module 1: Network Connect
 
 .. image:: ../images/netconnect.png
 
-**Narrative:** 
-----------------
+**Narrative**:
+
+As described in the intro, you work at ACME corp as a Network Engineer and have been tasked with privately connecting the backend server with the frontend server in AWS. 
+Your solution must be future-proof to allow for additional backends or frontends in the future. 
 
 **In Lab 1** we will be deploying an XC Node to to establish the Customer Edge (CE) which will provide connectivity to remote environments or sites. 
 
-**In Lab 2** we will configure the XC Node to act as a Software-Defined Router to stich together the two disparate networks using Network Connect. 
+**In Lab 2** we will configure the XC Node to act as a Software-Defined Router to stich together the On-prem and AWS networks using Network Connect. 
 
 
 .. image:: ../images/labs.png

@@ -11,12 +11,13 @@ Lab 2: Configuring Network Connect (L3/L4 Routing Firewall )
 
 *Review network security events in the XC console.
 
+**Narrative:** 
+Now that your XC Node is provisioned, it's time to verify, explore the XC Console and set up Network Connect to establish secure connectivity between the On-prem and AWS networks. 
+After the setup is complete, you will test connectivity and verify network security. 
+
 
 .. image:: ../images/lab2biz.png
 
-
-**Narrative:** 
-----------------
 
 Verify the XC Nodes health
 ---------------------------------------

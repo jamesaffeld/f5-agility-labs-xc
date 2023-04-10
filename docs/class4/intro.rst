@@ -2,7 +2,6 @@ Introduction to the Lab
 =======================
 
 **Narrative:**
-----------------
 
 Congratulations! You are a Network Engineer at ACME company. 
 
@@ -35,14 +34,11 @@ Given your current predicament and industry knowledge of F5 being a leader for d
 Lab Environment
 ---------------
 
-The on-prem environment is emulated by using a UDF environment that contains NGINX
-resources.
+The on-prem environment is emulated by the F5 UDF environment and contains an Ubuntu Server and an XC Node. 
 
-The first cloud environment is emulated by using a UDF Cloud Account in AWS that contains
-NGINX resources. **You will not have access to this account or the AWS console.**
+The AWS cloud environment contains a prebuilt XC Node and a workload hosting a web frontend.  **You will not have access to the AWS console.**
 
-The second cloud environment is emulated by using a UDF Cloud Account in AZURE that contains
-NGINX resources. **You will not have access to this account or the AZURE console.**
+The Azure cloud environment contains a prebuilt XC Node and a workload hosting a web frontend.  **You will not have access to the AZURE console.**
 
 .. toctree::
    :maxdepth: 1
