@@ -38,7 +38,7 @@ The on-prem environment is emulated by the F5 UDF environment and contains an Ub
 
 The AWS cloud environment contains a prebuilt XC Node and a workload hosting a web frontend.  **You will not have access to the AWS console.**
 
-The Azure cloud environment contains a prebuilt XC Node and a workload hosting a web frontend.  **You will not have access to the AZURE console.**
+The Azure cloud environment contains a prebuilt XC Node and a workload hosting a web frontend.  **You will not have access to the Azure console.**
 
 .. toctree::
    :maxdepth: 1

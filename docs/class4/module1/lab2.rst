@@ -100,8 +100,8 @@ Click on your Customer Edge Node **animal name**.  The default landing is Dashbo
 Configuring Network Connect
 ---------------------------------------
 
-Now that you are familiar with your new software defined Node we can start getting our hands dirty with real configuration necessary to meet ACME companies first requirement to
-get the network in AWS connected to the network in the Data Center. The backend security device will need to scan the frontend in AWS on port 80. 
+Now that you are familiar with your new software defined Node we can start getting our hands dirty with the real configuration necessary to meet ACME companies first requirement to
+get the network in the On-prem DC connected to the network in AWS. The backend security device will need to scan the frontend in AWS on port 80. 
 
 
 In our lab today, an Ubuntu Server in the UDF environment will simulate the backend. 
@@ -111,7 +111,7 @@ The AWS front end is already deployed along with an XC Node to extend the Custom
 .. image:: ../images/netconnlab.png
 
 
-What you have done so far is setup the ACME Data Center XC Node to extend the Customer Edge. 
+What you have done so far is setup the ACME Data Center XC Node to extend the Customer Edge On-prem. 
 Your first goal is to simply establish routing between these environments by using a hub and spoke model with our Regional Edges as shown in the diagram above.
 
 **End of Lab 1**

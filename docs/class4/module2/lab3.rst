@@ -12,11 +12,13 @@ Lab 3: Globally Available Front End
 
 **What they want:**
 
-.. image:: ../images/lab3bizreq.png
+.. image:: ../images/lab3bizreq1.png
 
 **Narrative:**
 
-Unfortunately, after doing your due diligence, you find that the Azure VNET overlaps with the AWS subnets. You think to yourself, this is going to be tricky, and reach out to your trusted F5 Solutions Engineer to see how this will work with Network Connect. 
+Unfortunately, after doing your due diligence, you find that the Azure VNET overlaps with the AWS subnets. To make matters worse, 
+the Azure server is not associated with any public IP and there is a security directive in place to not have any workload servers in Azure associated with a public IP. 
+You think to yourself, this is going to be tricky, and reach out to your trusted F5 Solutions Engineer to see how this will work with Network Connect. 
 
 Your F5 Solutions Engineer explains that IP overlap between sites is a common problem and one that can be easily solved with Distributed Cloud App Connect. 
 App Connect alleviates this problem by leveraging the XC Nodes as Software Defined proxies rather than SD Routers as they were configured with Network Connect.   

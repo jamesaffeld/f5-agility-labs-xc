@@ -11,7 +11,7 @@ Lab 4: App Connect - Solving IP Overlap
 
 *Review network security events in the XC console.
 
-.. image:: ../images/lab4bizreq.png
+.. image:: ../images/lab4bizreq1.png
 
 **Narrative:** 
 
