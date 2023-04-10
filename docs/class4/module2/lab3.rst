@@ -18,7 +18,7 @@ Lab 3: Globally Available Front End
 
 Unfortunately, after doing your due diligence, you find that the Azure VNET overlaps with the AWS subnets. To make matters worse, 
 the Azure server is not associated with any public IP and there is a security directive in place to not have any workload servers in Azure associated with a public IP. 
-You think to yourself, this is going to be tricky, and reach out to your trusted F5 Solutions Engineer to see how this will work with Network Connect. 
+You think to yourself, this is going to be tricky, and reach out to your trusted F5 Solutions Engineer to see how this will work with Distributed Cloud. 
 
 Your F5 Solutions Engineer explains that IP overlap between sites is a common problem and one that can be easily solved with Distributed Cloud App Connect. 
 App Connect alleviates this problem by leveraging the XC Nodes as Software Defined proxies rather than SD Routers as they were configured with Network Connect.   
@@ -46,6 +46,11 @@ A Regional Edge (RE) is part of Distributed Cloud Global Network that provides c
 to services.  Previously when we deployed the UDF / AWS sites these were considered
 "Customer Edge (CE)" and they make use of RE to communicate (each CE is associated with 
 two RE).
+
+
+Sanity Check
+-------------
+**This is what you just deployed.**
 
 
 

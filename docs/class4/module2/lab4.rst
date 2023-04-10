@@ -22,5 +22,9 @@ Recall from the lecture that Network connect, connects networks by using the XC 
 .. image:: ../images/lab4sm.png
 
 
-Thank you for completing the lab!
+Sanity Check
+-------------
+**This is what you just deployed.**
+
+
 

@@ -20,3 +20,12 @@ Any requests with /BAR should be routed to Azure.
 
 
 .. image:: ../images/lab5.png
+
+
+Sanity Check
+-------------
+**This is what you just deployed.**
+
+Thank you for completing the lab!
+
+

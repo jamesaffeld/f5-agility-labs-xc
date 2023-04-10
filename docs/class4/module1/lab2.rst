@@ -110,6 +110,12 @@ The AWS front end is already deployed along with an XC Node to extend the Custom
 
 .. image:: ../images/netconnlab.png
 
+Sanity Check
+-------------
+**This is what you just deployed.**
+
+
+
 
 What you have done so far is setup the ACME Data Center XC Node to extend the Customer Edge On-prem. 
 Your first goal is to simply establish routing between these environments by using a hub and spoke model with our Regional Edges as shown in the diagram above.
