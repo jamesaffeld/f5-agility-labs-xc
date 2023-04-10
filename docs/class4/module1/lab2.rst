@@ -79,7 +79,7 @@ Click on Documentation
 
 This will load the API specification for a Customer Edge Node, scroll down and explore the different API options. 
 
-Distributed Cloud is an API first approach for deployment.
+.. Important:: Distributed Cloud is developed with an API first methodology. Everything can be done via API. 
 
 
 .. image:: ../images/sitev.png

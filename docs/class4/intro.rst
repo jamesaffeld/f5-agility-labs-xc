@@ -28,7 +28,7 @@ Given your current predicament and industry knowledge of F5 being a leader for d
 .. image:: ./images/post-migration.png
 
 
-**Your job, should you choose to accept it and not get demoted, is to figure out the best way for the backend system to privately communicate with the frontend server.**
+**Your job, should you choose to accept it, and not get demoted, is to figure out the best way for the backend system to privately communicate with the frontend server.**
 
 
 Lab Environment

@@ -17,7 +17,7 @@ Lab 4: App Connect - Solving IP Overlap
 
 Now that the globally available frontend has been deployed, it's time to start working on **Deliverable #2** and configure connectivity between the three
 environments. Since Network Connect does **NOT** support IP overlap, we will configure the XC Nodes with App Connect. 
-Recall from the lecture that Network connect, connects networks by using the XC Nodes as SD Routers and App Connect use the XC Nodes as SD Proxies to connect applications. 
+Recall from the lecture that Network connect, connects networks by using the XC Nodes as SD Routers and App Connect uses the XC Nodes as SD Proxies to connect applications. 
 
 .. image:: ../images/lab4sm.png
 
