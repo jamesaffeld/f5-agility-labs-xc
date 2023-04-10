@@ -13,9 +13,12 @@ Lab 1: Building an XC Node (CE)
 
 After consulting with your trusted F5 Solutions Engineer, you decide to setup F5 Distributed Cloud Network Connect. This will allow for privately routed network connectivity between On-prem and AWS. 
 You also found out that you can use the Distributed Cloud Enhanced Firewall to provide network security. 
-You already did a push button deployment of the AWS XC Node to define the customer edge there which only took a few moments. 
+You already did a push button deployment of the AWS XC Node to define the customer edge there, which only took a few moments. 
 
-Now, Lab 1 starts right after you have loaded the OVA on your on-prem local hypervisor of choice (UDF). 
+Now, Lab 1 starts right after you have loaded the OVA on your on-prem local hypervisor (VMWARE or KVM). 
+
+.. NOTE:: Your on-prem environment is the F5 UDF platform which uses KVM as it's virtualization technology. The OVA has already been imported for you. 
+
 
 .. image:: ../images/lab1intro.png
 
