@@ -19,7 +19,7 @@ After the setup is complete, you will test connectivity and verify network secur
 .. image:: ../images/lab2biz.png
 
 
-Verify the XC Nodes health
+Verify the XC Node health
 ---------------------------------------
 
 If you are not already logged into the console, please do so now by opening the following URL in your browser: 
