@@ -28,7 +28,7 @@ https://f5-xc-lab-mcn.console.ves.volterra.io/
 
 From the **Select Service menu** click on **Cloud and Edge sites** and then click on **Site List**
 
-After the XC Node at the on-prem Customer Edge has registered successfully, it will appear green with a Health Score of 100. You may need to click **Refresh** in the top right corner
+After the XC Node has registered successfully, it will appear green with a Health Score of 100. You may need to click **Refresh** in the top right corner
 if you do not see your animal name. 
 
 

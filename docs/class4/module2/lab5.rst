@@ -3,13 +3,11 @@ Lab 5: Bonus Lab - L7 App Routing & Security
 
 **Objective:**
 
-*Configure security policy to protect the frontends from manual and automated web attacks.  
-
 *Configure the backend App Proxy to perform Layer 7 routing.
 
-*Test connectivity and verify security.
+*Configure security policy to protect the frontends from manual and automated web attacks.  
 
-*Review application security events in the XC console.
+*Test connectivity and review application security events in the XC console.
 
 .. image:: ../images/lab5bizreq.png
 
