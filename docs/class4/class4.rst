@@ -3,6 +3,8 @@ F5 Distributed Cloud - Intro to Multi-Cloud Networking
 
 This Lab environment highlights some of the basic concepts of F5 Distributed Cloud Multicloud Networking.
 
+**Narrative:** 
+
 During the lab you will be emulating a customer Engineer that responds to new business requirements quickly by implementing F5's, Network and App connect solutions. 
 The goal is to demonstrate and understand when to use Network Connect or App Connect to securely extend connectivity between disparate environments. 
 

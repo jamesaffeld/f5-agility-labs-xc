@@ -2,8 +2,8 @@ Lab 3: Globally Available Front End
 ================================================
 
 
-**Narrative:**
-
+**Narrative:** 
+----------------
 
 Everything has been running terrific at ACME with your current Network Connect model. Your boss is pleased with your work
 and has a new assignment for you. ACME has aquired a new company that utilizes Azure. None of their servers are public facing. 

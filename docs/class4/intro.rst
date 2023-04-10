@@ -1,8 +1,8 @@
 Introduction to the Lab
 =======================
 
-Narrative
----------
+**Narrative:**
+----------------
 
 Congratulations! You are a Network Engineer at ACME company. 
 

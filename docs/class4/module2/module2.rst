@@ -3,6 +3,8 @@ Module 2: App Connect
 
 .. image:: ../images/appconnect.png
 
+**Narrative:** 
+
 
 **In Lab 3** we will be satisfying the latest ACME business requirements by providing a globally available frontend to the cloud application
 

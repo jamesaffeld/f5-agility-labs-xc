@@ -15,6 +15,9 @@ Lab 2: Configuring Network Connect (L3/L4 Routing Firewall )
 .. image:: ../images/lab2biz.png
 
 
+**Narrative:** 
+----------------
+
 Verify the XC Nodes health
 ---------------------------------------
 

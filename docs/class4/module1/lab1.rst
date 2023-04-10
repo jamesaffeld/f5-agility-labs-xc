@@ -9,6 +9,9 @@ Lab 1: Building an XC Node (CE)
 
 *Explore and become familiar with the Distributed Cloud console.
 
+**Narrative:** 
+----------------
+
 
 **Prerequisite**
 --------------
