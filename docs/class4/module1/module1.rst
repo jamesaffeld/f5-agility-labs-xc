@@ -1,8 +1,14 @@
-Module 1: Creating an XC Node (CE) and Network Connect
-=====================================
+Module 1: Network Connect
+=======================================================
 
-In Lab 1 we will be deploying an XC Node to provide connectivity to remote environments or sites. 
-In Lab 2 we will configure the XC Node to act as a Software defined router to stich together 2 disparate networks at Layer 3 using Network Connect concepts. 
+.. image:: ../images/netconnect.png
+
+**In Lab 1** we will be deploying an XC Node to to establish the Customer Edge (CE) which will provide connectivity to remote environments or sites. 
+
+**In Lab 2** we will configure the XC Node to act as a Software-Defined Router to stich together the two disparate networks using Network Connect. 
+
+
+.. image:: ../images/labs.png
 
 .. toctree::
    :maxdepth: 1
