@@ -5,19 +5,19 @@ Lab 1: Building an XC Node (CE)
 
 *Get familiar with the UDF lab environment. 
 
-*Deploy an XC node to define the Customer Edge at the UDF Data Center (on-prem).
+*Deploy an XC node to define the Customer Edge at the UDF Data Center.
 
 *Explore and become familiar with the Distributed Cloud console.
 
 **Narrative:** 
 
-After consulting with your trusted F5 Solutions Engineer, you decide to setup F5 Distributed Cloud Network Connect. This will allow for privately routed network connectivity between On-prem and AWS. 
-You also found out that you can use the Distributed Cloud Enhanced Firewall to provide network security. 
-You already did a push button deployment of the AWS XC Node to define the customer edge there, which only took a few moments. 
+After consulting with your trusted F5 Solutions Engineer, you decide to setup F5 Distributed Cloud Network Connect. This will allow for privately routed network connectivity between two disparate networks. 
+You also found out that you can use the F5 Distributed Cloud Enhanced Firewall to provide network security between the sites. 
+You already did a push button deployment of the AWS XC Node to define the Customer Edge in the ACME VPC, which only took a few moments. 
 
-Now, Lab 1 starts right after you have loaded the OVA on your on-prem local hypervisor (VMWARE or KVM). 
+Now, Lab 1 starts right after you have loaded the OVA on your Data Center's local hypervisor (VMWARE or KVM). 
 
-.. NOTE:: Your on-prem environment is the F5 UDF platform which uses KVM as it's virtualization technology. The OVA has already been imported for you. 
+.. NOTE:: Your Data Center environment is the F5 UDF platform, which uses KVM as it's virtualization technology. The OVA has already been imported for you. We also have hardware and container deployment options for the XC Node. 
 
 
 .. image:: ../images/lab1intro.png
@@ -28,17 +28,20 @@ Now, Lab 1 starts right after you have loaded the OVA on your on-prem local hype
 
 .. NOTE:: You should have received an email from F5 Distributed Cloud User Management <no-reply@volterratmails.io> with the content as follows:
 
+
 .. image:: ../images/updatepasswd.png
  
  
-If you have not already, please click on Update Password, and change your credentials. Ensure you adhere to the password strength restrictions and make a mental note of these credentials as you will need them several times throughout the labs today. 
+If you have not already, please click on **Update Password**, and change your credentials. Ensure you adhere to the password strength restrictions and make a mental note of these credentials as you will need them several times throughout the labs today. 
 
 Once you've set your new password you will be presented with the following screen:
 
 
 .. image:: ../images/tenantlogin.png 
 
+
 In the domain field, enter: **f5-xc-lab-mcn**, click **Next** and sign in with your email address and password you've just set, and proceed to accepting the Terms and Conditions. 
+
 
 .. warning:: If you have not received the email to change your credentials or ran into problems changing your credentials, please stop and get help from one of the Lab Assistants. 
 
@@ -46,45 +49,54 @@ In the domain field, enter: **f5-xc-lab-mcn**, click **Next** and sign in with y
 **Logging into the XC Console**
 ---------------------------------
 
-#. After accepting Terms and Conditions, you will need to select your "persona". 
 
-   Enter your persona as "NetOps" and level as "Intermediate".  You can change these settings after logging in as well.
+After accepting the Terms and Conditions, you will need to select your "Persona". 
 
-   Your persona will highlight workflows within F5 Distributed Cloud.  You will be able to access all services, but making use of
-   personas can focus your view on particular tasks that are relevant to your role.
+Enter your persona as **"NetOps"** and level as **"Intermediate"**.  You can change these settings after logging in as well.
 
-#. Click on **"Account Settings"** by expanding the **"Account"** icon in the top right of the screen and 
-   clicking on **"Account Settings".**  In the resulting window you can observe the **Work domains and skill level** section and 
-   other administrative functions.
+Your persona will highlight workflows within F5 Distributed Cloud.
+You will be able to access all services, but making use of personas can focus your view on particular tasks that are relevant to your role.
+
+Click on **"Account Settings"** by expanding the **"Account"** icon in the top right of the screen and clicking on **"Account Settings".**  
+In the resulting window you can observe the **Work domains and skill level** section and other administrative functions.
    
 .. note::
    *For the purposes of this lab, permissions have been restricted to lab operations.  As some menus will be locked and not visible.*
 
-|intro006|
+.. image:: ../images/intro1.png 
 
-|intro007|
+
+For informational purposes only:
+.. image:: ../images/intro2.png 
+
+
 
 **Find your Namespace**
 ---------------------------------
 
-#. Namespaces, which provide an environment for isolating configured applications or enforcing role-based access controls, are leveraged
-   within the F5 Distributed Cloud Console.  For the purposes of this lab, each lab attendee has been provided a unique **namespace** which
-   you will be defaulted to (in terms of GUI navigation) for all tasks performed through the course of this lab.
 
-#. Click on **Load Balancers** from the main dashboard under Common Services.
+Namespaces, which provide an environment for isolating configured applications or enforcing role-based access controls, are leveraged
+   within the F5 Distributed Cloud Console.  For the purposes of this lab, each lab attendee has been pre-assigned a unique **namespace** 
+   for all tasks performed in this lab.
 
-.. image:: ../images/loadbalancer.png 
-
+From the **Select service** menu, click on **Web App & API Protection**. 
 
 
-3. In the **Load Balancers** configuration screen observe the URL. In the URI path, locate the **<adjective-animal>** namespace that you have
+
+.. image:: ../images/findnamespace.png 
+
+
+
+In the **Web App & API Protection Security Dashboard** configuration screen **observe** the browser URL. In the URI path, locate the **<adjective-animal>** namespace that you have
    been assigned. It will be located in the portion of the URI path between */namespaces/* and */sites/* as shown in this example 
-   **…/namespaces/<namespace>/sites/…**. Note your namespace as it will be used throughout the lab tasks that follow.
+   **…/namespaces/<namespace>/sites/…**. 
+   
+**Note your namespace as it will be used throughout the labs today.**
 
 .. warning:: If you have problems locating your namespace, please see a lab assistance.
 
 
-|intro009|                                                                                   |
+.. image:: ../images/namespace1.png
 
 
 .. note:: Administratively, there are other ways to find namespaces. Due to access and permission restrictions for this particular lab, those menus are not available.
@@ -94,39 +106,41 @@ In the domain field, enter: **f5-xc-lab-mcn**, click **Next** and sign in with y
 **Site Token**
 ----------------
 
-Soon, you will be standing up an XC Node in the udf lab environment (on-prem dc) that will need a way to register itself to the Distributed Cloud Infrastructure and associate it with your tenant. To do this you will need a Site Token. 
+Soon, you will be configuring an XC Node in the F5 UDF Lab Environment (Data Center) that will need a way to register itself to the Distributed Cloud Infrastructure and associate it with your tenant. For this you will need a Site Token. 
 
 If you are not already logged into the console, please do so now by opening the following URL in your browser: 
 
 https://f5-xc-lab-mcn.console.ves.volterra.io/
 
-Click on **Cloud and Edge Sites**
 
-.. image:: ../images/cloudandedge.png 
+From the **Select service** menu, click on **Multi-Cloud Network Connectn**. 
 
 
-Alternatively, if you’re already logged into Distributed Cloud
+.. image:: ../images/sitetoke.png 
 
-1. Click on the Select Service in the left-hand navigation. Click on Cloud and Edge Sites 
-  
-  .. image:: ../images/cloudandedge2.png 
 
-2. On the side menu go down to Manage, then select **Site Management > Site Tokens**
+On the side menu go down to Manage, then select **Site Management > Site Tokens**
     
-3. In the lab we have generated a Site Token for you to use named **student-ce-site**.  
+In the lab we have generated a Site Token for you to use named **student-ce-site**.  
 In your production environment you will need to create your own Site Token to register your Customer Edge node.  
 
-  .. image:: ../images/tokens.png 
 
-4. Copy the UID of the the **student-ce-site** token and paste if somewhere you can reference later (word, notepad etc)
+  .. image:: ../images/tokens.png
+
+
+Copy the UID of the the **student-ce-site** token and paste if somewhere you can reference later (word, notepad etc).
+
+.. image:: ../images/copytoke.png 
 
 
 **Setting up the Customer Edge**
 ----------------------------------
 
-In your browser, you should have a tab open to the UDF course. Under the F5 Distributed Cloud CE, click on **Access-->Site UI**
+In your browser, you should have a tab open to the UDF course. Under the F5 Distributed Cloud CE, click on **Access >> Site UI**
+
 
 .. image:: ../images/udf-ce.png 
+
 
 This should prompt you for authentication and then open the Customer Edge node Admin portal.
 
@@ -139,19 +153,27 @@ Default Username:                **admin**
 Default Password:                **Volterra123**
 ==============================  =====
 
+
 .. image:: ../images/signin.png 
+
 
 You will be prompted to change the password at the initial log in. **Make a mental note of these credentials as you will need them several times throughout the labs today.** 
 
+
 .. image:: ../images/changepwd.png
+
 
 After you set the password, the services will need to restart and then the Customer Edge node will present the Dashboard
 
+
 .. image:: ../images/restart.png 
+
 
 Once all services are up and running you should see the Dashboard:
 
+
 .. image:: ../images/dash.png 
+
 
 You will notice the XC Node is not configured yet.  Also notice the VP Manager Status.  If you mouse-over each of the icons, the specific services will report their status in addition to the status reflected by the icon.
 
@@ -161,7 +183,9 @@ You can also scroll down and see hardware details that describe the platform tha
 
 Click **Configure Now**
 
+
 .. image:: ../images/ceconf.png 
+
 
 This will take you to the Customer Edge Device Configuration page.
 
@@ -179,18 +203,24 @@ Longitude                       -117.91
 
 The end result should look like the image below, and then click **Save Configuration.**
 
+
 .. image:: ../images/devconf.png 
 
 
-After you save the configuration, you will be taken back to the Dashboard, notice the status change to **“Approval”.**
+After you save the configuration, you will be taken back to the Dashboard, notice the status change to **“Approval”** after a few moments. (May need to refresh page)
+
 
 .. image:: ../images/approval.png 
 
-**You can safely ignore this benign warning due to the UDF lab environment.**
+
+**You can safely ignore this benign timing error due to the UDF lab environment.**
+
 
 .. image:: ../images/error.png 
 
+
 We will now go accept the Customer Edge registration in Distributed Cloud console. 
+
 
 **Registering the Customer Edge**
 ----------------------------------
@@ -199,25 +229,30 @@ Go back to the Distributed Cloud console.  If the session timed out, you will ne
 
 https://f5-xc-lab-mcn.console.ves.volterra.io/
 
-From the **Select Service menu** click on **Cloud and Edge sites**.
+From the **Select service** menu, click on **Multi-Cloud Network Connect**.
 
-On the side menu go down to **Manage>>Site Management>>Registrations.**
+On the side menu go down to **Manage >> Site Management >> Registrations.**
+
 
 .. image:: ../images/sitemgt.png 
 
-The Customer Edge node you configured from the previous step should appear on this list, if not give it a couple minutes and refresh the screen by clicking the Refresh button at the top right-hand corner.  
+
+The Customer Edge node you configured from the previous step should appear on this list, if not give it a couple minutes and refresh the screen by clicking the **Refresh button** at the top right-hand corner.  
+
 
 .. image:: ../images/sitereg.png
 
+
 .. Tip:: This process can take a few minutes for the node to register with Distributed Cloud. 
 
-Once the node appears in the Registration list, accept the registration of the node by clicking on the blue check mark.  You can also decommission the node if you feel there’s an error with the settings by clicking the red X. 
+Once the node appears in the Registration list, accept the registration of the node by clicking on the blue check mark.
 
-Click the blue check mark to accept the registration. 
+**Click the blue check mark** to accept the registration. 
 
-.. Note::  If you DO NOT see a blue check mark, its likely your browser width is NOT wide enough.  Simply increase the width of the browser and you should see the blue checkmark to approve the registration.
+.. Note::  If you DO NOT see a blue check mark, it's likely your browser width is NOT wide enough.  Simply increase the width of the browser and you should see the blue checkmark to approve the registration.
 
-This will bring up the Registration Acceptance menu which shows all the settings of the Customer Edge node.  Note the parameters you’ve entered from the previous exercise are pre-populated into the appropriate fields. 
+
+Once you hace clicked the checkmark, the console will bring up the Registration Acceptance menu which shows all the settings of the Customer Edge node.  Note the parameters you’ve entered from the previous exercise are pre-populated into the appropriate fields. 
 
 .. Important:: Look at the Cluster Size parameter and notice this is set to 1.  In this lab, we will only deploy a single node cluster and thus leave this setting as 1.  In a production environment, the best practice is to deploy a 3-node cluster minimum.  In that case, the Cluster Size parameter would be set to 3 so an appropriately sized cluster can be formed.
 
@@ -233,43 +268,40 @@ Scroll down to Site to Site Tunnel Type and click on the drop down arrow
 .. image:: ../images/s2sarrow.png
 
 
-Select IPSEC or SSL from the list.  This setting is what determines the connectivity method used for the mesh. THe XC Node will form autamatically bring up redundant tunnels to two different Regional Edges. 
-These tunnels are self-healing and can fallback when using the configuration setting of IPSEC or SSL VPN.
+Select **IPSEC or SSL** from the list.  This setting determines the VPN connectivity protocols used. The XC Node will autamatically bring up redundant tunnels to two different Regional Edges. 
+These tunnels are self-healing and can fallback when using the configuration setting of IPSEC or SSL.
 
 
 .. image:: ../images/iporssl.png
+
 
 Click **Save and Exit**. 
 
 
 Once the registration completes, you can see the cluster in the “Other Registrations” tab and the current state will be ADMITTED.
 
+
 .. image:: ../images/otherregs.png
 
-The Customer Edge Node Admin portal will also reflect some changes in its status, although the node still requires some additional configuration
 
+The Customer Edge Node Admin portal will also reflect some changes in its status, although the node still requires some additional configuration.
+From the menu on the left click on **Site List** and observe your Nodes (animal name). Hint: You may have to hit **Refresh**  in the upper right corner. 
 
 
 .. image:: ../images/provisioning.png
 
 
-In the Distributed Cloud console, once the Node has been Admitted, click on Site List under Cloud and Edge Sites at the top left hand corner. 
-
-.. image:: ../images/sitelist.png
-
-You should see the CE you just deployed on this list. 
+You should see the CE you just deployed on this list go through several phases of provisioning and you can observe the  **Site Admin State, Health Score, and Software Version and OS version.**
+You may also observe the Health score going up and down as services are spun up and restarted. 
 
 .. Note:: This step takes about 10 -15 minutes to complete and will finish up while we start our presentation and lecture. 
 
-Observe the different **Site Admin State, Health Score, and Software Version and OS version.**
 
-.. image:: ../images/prov1.pngFIX
+The end result should look something like the following screen where the node is green at 100 percent health and has the latest software version. 
 
-The Node will go through what we call the provisioning process, where the latest Software version will be installed. You can see that by looking at the status under the SW Version. You may also observe the Health score going up and down as services are spun up and restarted. 
 
-The end result should look something like the following screen where the node is green at 100 percent health and have the latest software version have a successful status. 
+.. image:: ../images/prov2.png
 
-.. image:: ../images/prov3.pngFIX
 
 Sanity Check
 -------------
@@ -280,13 +312,3 @@ Sanity Check
 
 
 **End of Lab 1**
-
-
-
-.. |intro006| image:: ../images/intro-006.png
-   :width: 800px
-.. |intro007| image:: ../images/intro-007.png
-   :width: 800px
-.. |intro009| image:: ../images/intro-009.png
-   :width: 800px
-

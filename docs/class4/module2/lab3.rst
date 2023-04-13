@@ -37,18 +37,12 @@ Create a globally scaled and future-proof frontend with the XC Regional Edges **
 
 **Deliverable 2:**
 
-Leverage App Connect to create a site mesh which will allow for secure site to site connectivity regardless of IP overlap. **(Lab 4)**
+Leverage App Connect for secure site to site connectivity regardless of IP overlap. **(Lab 4)**
 
-.. image:: ../images/lab4.png
+.. image:: ../images/lab4goal.png
 
 
-Regional Edge
-~~~~~~~~~~~~~
-
-A Regional Edge (RE) is part of Distributed Cloud Global Network that provides connectivity 
-to services.  Previously when we deployed the UDF / AWS sites these were considered
-"Customer Edge (CE)" and they make use of RE to communicate (each CE is associated with 
-two RE).
+[INSERT Step by Step Documentation]
 
 
 Sanity Check
