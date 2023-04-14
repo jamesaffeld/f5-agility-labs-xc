@@ -29,40 +29,47 @@ https://f5-xc-lab-mcn.console.ves.volterra.io/
 From the **Select service** menu, click on **Multi-Cloud Network Connect** and then click on **Site List,**
 
 Your XC Node should have registered successfully and will appear green with a Health Score of 100. You may need to click **Refresh** in the top right corner
-if you do not see your animal name. 
+if you do not see your animal name. In this example I was assigned **rested-tiger**.
 
+|
 
 .. image:: ../images/registeredce.png
-    
+
+|
 
 .. Important:: If you do not see your Site as registered or in a healthy state please see a Lab Assistant.
-    
-From this dashboard you can note the current **Site Admin State, Provider, SW version, and OS version.** 
+
+
+From this Dashboard you can note the current **Site Admin State, Provider, SW version, and OS version.** 
+
 
 **Please DO NOT click "Upgrade" on any of the Sites!**
 
+
 Instead, **Click** on the three dots under the **Actions** column at the far right of the screen of **"your animal"**  Site and click on **Manage Configuration**. 
 
-In this example I was assigned **rested-tiger**.
-
+|
 
 .. image:: ../images/action.png
-    
+
+|   
 
 Review the **Metadata, Site Type** and **Coordinates** fields as well as the **Connected REs** (Regional Edge) section.  
 
 These are the closest Regional Edge sites based on the latitude and longitude information provided during the deployment process. **Each CE has an auto-provisioned self-healing secure tunnel to redundant RE's.** 
 
+|
 
 .. image:: ../images/remeta.png
 
+|
 
-
-Look at the top left-hand corner where you see Form, Documentation and JSON. **You will see this throughout the Distributed Cloud console configuration menus.**
+Look at the top left-hand corner where you see Form, Documentation and JSON. **You will see these fields throughout the Distributed Cloud console configuration menus.**
 
 
 .. Important:: Distributed Cloud is built with an API-first strategy. All the configurations can be done via GUI or API calls. 
 
+|
 
 You can view the JSON file of the configuration by clicking **JSON**. 
 
@@ -72,44 +79,48 @@ You can view the JSON file of the configuration by clicking **JSON**.
 
 This is the JSON code of the configuration which could be saved to create a backup of the Customer Edge configuration, but that is beyond the scope of this lab. 
 
+|
 
 .. image:: ../images/json1.png
 
+|
 
 Click on **Documentation**.
 
+|
 
 .. image:: ../images/docu.png
 
+|
 
-This will load the API specification for a Customer Edge Node. Scroll down and explore the different API options. 
+This will load the API specification for a Customer Edge Node. Review briefly and click **Cancel and Exit**
 
+|
 
 .. image:: ../images/sitev.png
 
-
-When you are done exploring, click on the **Cancel and Exit** button at the bottom left-hand corner.
-
-
-.. image:: ../images/cancel.png
+|
 
 
 In the **Site List** screen, click on your Customer Edge Node **animal name**.  
 
-The default landing is a Dashboard giving you a summary of the Customer Edge Node.  **Note the menus at the top of the screen.**
+The default landing is a Dashboard giving you a summary of the Customer Edge Node.  **Briefly** explore the extensive menus and analytics at the top of the screen.
 
+|
 
 .. image:: ../images/dash1.png
 
-**Everytbing looks great at this point! Let's get those networks connected with F5 Distributed Cloud Network Connect!!
+|
+
+Narrative Check
+-----------------
+
+Now that you are familiar with your new "Software Defined" Node, we can start getting our hands dirty with the real configuration necessary to meet ACME Corp's first requirement to
+get the network in the Data Center connected to the network in AWS. The backend security device will need to "scan" the frontend in AWS on port 80 and all other ports must be blocked. 
 
 
 Configuring Network Connect
 ---------------------------------------
-
-Now that you are familiar with your new software defined Node we can start getting our hands dirty with the real configuration necessary to meet ACME companies first requirement to
-get the network in the Data Center connected to the network in AWS. The backend security device will need to "scan" the frontend in AWS on port 80. 
-
 
 In our lab today, an Ubuntu Server in the UDF environment will simulate the backend. 
 The AWS front end is already deployed along with an XC Node to extend the Customer Edge in the cloud. 
@@ -118,225 +129,224 @@ The AWS front end is already deployed along with an XC Node to extend the Custom
 .. image:: ../images/netconnlab.png
 
 
-What you have done so far is setup the ACME Data Center XC Node to extend the Data Center Customer Edge. 
+What you have done so far in Lab 1 and the beginning of Lab 2, is setup the ACME Data Center XC Node to extend the Data Center Customer Edge. 
 Your next goal is to simply establish routing between these environments by using a hub and spoke model with our Regional Edges as shown in the diagram above.
 
-**All traffic between these networks will now be routed through auto-provisioned self-healing encrypted tunnels between the defined Custoemr Edges and the XC Regional Edges. 
+**All traffic between these networks will now be routed through auto-provisioned, self-healing and encrypted tunnels between the defined Customer Edges and the XC Regional Edges.**
 
+
+.. Note:: In this lab some objects are already created due to permission requirements in the XC Lab environment. You will still observe and walkthrough the configuration for referrence. 
+
+
+Global Virtual Network  
+------------------------
 
 To connect two or more Distributed Cloud node environments together across the Distributed Cloud network we will need to connect the sites through a Global Virtual Network.  
 
-.. Note:: In this lab some objects are already created due to the single tenant nature of the XC Lab environment. You will still observe and walkthrough the configuration for referrence. 
+Confirm you are still in the **Multi-Cloud Network Connect** Console under **Site List**. If not, click on the **Select Service** in the left-hand navigation and click on **Multi-Cloud Network Connect**.
 
+On the left side menu, navigate to  **Manage >> Networking >> Virtual Networks**. 
 
-Creating a Global Network  
---------------------------
+**Observe** the pre-configured **student-global** Virtual Network. Click the the dots under the **Action** menu for **student-global** and look at the very simple config. 
 
-Confirm you are still in Cloud and Edge Sites. If not, click on the **Select Service** in the left-hand navigation. Click on **Cloud and Edge Sites**.
+|
 
+.. image:: ../images/studglob.png
 
-.. image:: ../images/cande.png
+|
 
+Click **Cancel and Exit**. 
 
-On the left hand side menu go down to **Manage >> Networking >> Virtual Networks**.
-
-
-.. image:: ../images/netmgt.png
-
-
-Click on Add Virtual Network at the top menu 
-
-
-.. image:: ../images/addvirt.png
-
-
-This will open the configuration window for a new virtual network.  
-
+.. Note:: Due to tenant permissions you will not be able to create your own Global Virtual Network.  
  
+If you wanted to configure this outside of the lab, you would literally click **Add Virtual Network** button, enter a name for the Virtual Network and make sure it is type **Global**. Very simple! 
 
-Enter a name for the Virtual Network. Please use your namespace (adjustive + animal) follow by global (ex: tops-lion-global) 
-
-Go to Virtual Network Type > click on the drop down arrow > select Global Network  
-
-
-.. image:: ../images/vnt.png
-
-
-The configuration should look like the screen below, click Save and Exit at the bottom right. 
+The configuration **would** look like the screen below.
  
 
 .. image:: ../images/meta.png
 
 
-Next a fleet is required for eet for on prem nodes. Note: in this lab we have already created a fleet. The following instructions are provided for you to help guide you in your production environment. 
-
- 
-
-A fleet is a collection of network and node objects in a site. When creating a fleet, a fleet_label (required) is created. This label is created in the “Shared” namespace for the tenant. Recall “Shared” namespace is the global settings for a tenant and not the individual namespace. 
-
-
-Creating a Fleet
+Fleets
 ------------------
+A Fleet is used to configure infrastructure components (like nodes) in one or more F5® Distributed Cloud Services Customer Edge (CE) sites homogeneously. 
+
+Fleet configuration includes the following information
+
+*Software image release to be deployed on the Fleet
+
+*Virtual networks
+
+*List of interface and devices to be configured on every node
+
+*Connections between the virtual networks
+
+*Security policies applied in the Site
 
 
-In Multi-Cloud Network Connect context > go down to Manage > Site Management > Fleets 
-
-
-.. image:: ../images/fleet.png
-
-
-Click on **Add Fleet**.
-
-
-.. image:: ../images/addfleet.png
-
-
-In the fleet configuration, under the Metadata section, enter a Name for the fleet.  
-
-
-.. image:: ../images/meta1.png
-
-Under the Fleet Configuration section the Enter a label for the Fleet Label Value recall this is the label that’ll be generated and used in the “Shared” namespace of the tenant.  
-
-Also under Fleet Configuation, defines the node Outside (Site Local) Virtual Network and Site Local Inside Virtual Network. These virtual networks points to the node interfaces eth0 aka SLO, and eth1 aka SLI 
-
-
-.. image:: ../images/fleetcfg.png
-
-
-Under the Network Connectors section, select the Global Network created from the previous step 
-
-
-.. image:: ../images/netconn1.png
-
-Click Save and Exit 
-
-Previous exercises are key concepts to help you understand some of the components required to establish layer 3 connectivity between nodes. This next part of the lab we will quickly review the settings of the pre-configured Fleet and Virtual Network used in this lab to help establish connectivity.  
-
-Review Virtual Network Config 
---------------------------------------
-
-Click on the **Select Service** in the left-hand navigation. Click on **Cloud and Edge Sites**.
-
-On the left hand side menu go down to Manage > Networking > Virtual Networks 
-
-.. image:: ../images/virtnet.png
-
-Click on the 3 dots to the far right hand side  student-global  
-
-
-.. image:: ../images/studglob.png
-
-
-This will expand the menu, select Manage Configuration  
-
-
-.. image:: ../images/mgcfg.png
-
-
-In the next screen click on Edit Configuration  
-
-
-.. image:: ../images/editconf.png
-
-
-Observe the configurations for student-global. Note the Virtual Network Type “Global”. This is specify the Virtual Network type will be a connection into F5 Distributed Cloud fabric/ADN. 
-
-
-.. image:: ../images/studmeta.png
-
-
-Click Cancel and Exit at the bottom left 
+.. Note:: In this lab we have already created a fleet called "student-fleet" for you due to permission restrictions.  
 
 Review Fleet Config
 ------------------------
 
-In Multi-Cloud Network Connect context > go down to Manage > Site Management > Fleets 
+In Multi-Cloud Network Connect context, go down to **Manage >> Site Management >> Fleets.**
 
-Click on the 3 dots at the far right hand side of student-fleet  
+Click on the 3 dots at the far right hand side of student-fleet and select **Manage Configuration**
 
+|
 
 .. image:: ../images/studfleet.png
 
+|
 
-This will expand the menu, select Manage Configuration  
+In the next screen click on **Edit Configuration** in the top right of the screen and **Observe** the Fleet Configuration and Network Connectors. 
 
-.. image:: ../images/mgcfg.png
+The **Network Connectors** are configured as:
 
+**student-global-connector**
 
-In the next screen click on Edit Configuration  
+*Network Connector Type: Direct, Site Local Inside to a Global Network
 
-Observe the Fleet Configuration and Network Connectors.  
+*Global Virtual Network: system/student-global 
 
- 
+|
 
-Click Cancel and Exit 
+**student-snat-connector**
 
+*Network Connector Type: SNAT, Site Local Inside to Site Local Outside
 
-Fleet definition on a cloud node 
----------------------------------
+*Routing Mode: Default Gateway
 
-On a cloud node (i.e. AWS, Azure, GCP) once a fleet is defined, you will need to add the fleet label to the node. Again in this lab this has already been done for you. We will walk you through how to verify this in Azure node.  
+*SNAT Source IP Selection: Interface IP
 
- 
-.. image:: ../images/avnet.png
+|
 
+**student-ce-global-connector**
 
-.. image:: ../images/avns.png
+*Network Connector Type: Direct, Site Local Outside to a Global Network
 
+*Global Virtual Network: system/student-global 
 
-.. image:: ../images/dest.png
+|
 
+Also, notice Network Firewall is NOT currently defined. We will come back to that in a few moments. 
 
-.. image:: ../images/edit.png
-
-
-Observe the fleet label  
-
-
-.. image:: ../images/fleetmeta.png
+ Click **Cancel and Exit.**
 
 
-To Add a fleet to a cloud node in your production environment do the following  
+Fleet Label 
+-------------
+Fleet has a field called fleet_label. When a Fleet object is created, the system automatically creates a known_label ves.io/fleet=. 
+The known_label is created in the Shared namespace for the tenant. A site is made a "member of Fleet" when this known_label is added to the site. 
+A site can have at most one known_label of type ves.io/fleet and hence belongs to exactly one Fleet at any given time.
+
+**Note** the **Fleet Label Value** of the **student-fleet**. The label is also named **student-fleet**. 
+
+.. image:: ../images/flv.png
 
 
-.. image:: ../images/label.png
+
+Bringing up the Connection
+----------------------------
+From your UDF environment browser tab,  click on Access >> Web Shell on the Ubuntu Client. This will open a new tab to a Web Shell. 
+
+|
+
+.. image:: ../images/ubuntu.png
+
+|
+
+**The workload in AWS has an IP address of 10.0.3.253**
+
+Type **ping 10.0.3.253** and hit **Enter**. You **WILL NOT** get a response. 
+
+Back in the XC Console, navigate to **Multi-Cloud Network Connect >> Site List** and find **"your animal name"**
+Click the **3 buttons** under the **Action Menu** under **"your animal name"** and select **Manage Configuration**. 
+
+In the top right click **Edit Configuration**. 
+
+You should be here. We will be adding a **Fleet Label** to tag our CE Node into the fleet. 
+
+|
+
+.. image:: ../images/fleetlabel.png
+
+|
+
+Click **Add Label** under the **Labels** section and select the label **ves.io/fleet.** 
+For the value click on **student-fleet**, scroll down, **Save and Exit**. 
+
+|
+
+.. image:: ../images/fleetlabel1.png
+
+|
+
+It should look like this: 
+
+|
+
+.. image:: ../images/fleetlabel2.png
+
+|
 
 
-.. image:: ../images/label1.png
+Check back on your web shell tab with the ping going. Success!!
+
+|
+
+.. image:: ../images/ping.png
+
+|
+
+.. important:: If you want to tear down this connectivity it is as easy as removing the label. 
 
 
-Click Cancel and Exit  
+In XC Console, navigate to **Multi-Cloud Network Connect** and then click on **Site List,**, click directly on **"your animal name"** and click on tools menu on the top, far right. 
 
-Go to site list, click on your CE animal name and click on tools on the far right. 
-Click on Show Routes 
+Click on **Show Routes** 
 
+.. image:: ../images/shroutes.png
 
-.. image:: ../images/showroutes.png
+Set Virtual Network Type to: **VIRTUAL_NETWORK_SITE_LOACAL_INSIDE** and click the blue **Show routes** button
 
+.. image:: ../images/shroutes2.png
 
-You can now use the access method on your ubuntu server to test ping. 
+Scroll down to see the AWS subnet route **"10.0.3.0/24** being advertised through the tunnel. 
 
-insert screenshots
+.. image:: ../images/shroutes3.png
 
+Routing is good, now let's test some other ports. 
+Go back to the web shell where you ran a ping. We will now test 2 ports that we know the server is listening on. 
+
+Port 80 - Simple Web page
+Port 8080 - Diagnostic tool
+
+[FIX ONCE port 80 IS UP on AWS container]
+
+Our first test will be to port 80. In the web shell type: **curl http:/10.0.3.253** 
+
+.. image:: ../images/show req and response.pngFIX
+
+Next, push the up arrow and run the same command but targeted at port 8080 like this: **curl http:/10.0.3.253:8080** 
+
+.. image:: ../images/8080.png
+
+.. Note:: We now have to close port 8080 per the ACME Corp security department requirement. 
 
 Enhanced Firewall policy
 ---------------------------------
 
-Observe that you can curl to the AWS machine on pot port 80 and port 8080. 
+You will now configure the F5 Distributed CLoud Enhanced Firewall to provide network security between these sites. 
 
-
-You will now =con figure thte F5 Distributed CLoud Enhanced Firewall to provide network security between these sites. 
-
-
-
+.. image:: ../images/efwp.png
 
 
 Sanity Check
 -------------
 **This is what you just deployed.**
 
-
+[INSERT DIAG HERE]
 
 
 **End of Lab 1**
