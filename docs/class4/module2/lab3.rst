@@ -24,7 +24,7 @@ You think to yourself, this is going to be tricky, and reach out to your trusted
 Your F5 Solutions Engineer explains that IP overlap between sites is a common problem and one that can be easily solved with Distributed Cloud App Connect. 
 App Connect alleviates this problem by leveraging the XC Nodes as Software Defined proxies rather than SD Routers as they were configured with Network Connect.
 
-Also, you are informed that by using F5 Distributed Cloud Regional Edges, we will now have full proxy visibility into the client traffic so we can start to understand what's been happening with the client traffic. 
+Also, you are informed that by using F5 Distributed Cloud Regional Edges for the frontend workloads, you will have full proxy visibility and analytics for the client traffic so the Security team will be pleased. 
 
 After reviewing the architecture with you, your Solutions Engineer advises you to break up these requirements in to 2 specific deliverables. 
 

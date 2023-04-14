@@ -3,7 +3,7 @@ Introduction to the Lab
 
 **Narrative:**
 
-Congratulations! You are a Network Engineer at ACME company. 
+Congratulations! You are a Network Engineer at ACME Corp. 
 
 
 ACME has an Application team that supports internally developed traditional and modern apps, vendor provided and SAAS applications. 
@@ -19,7 +19,7 @@ Given your current predicament and industry knowledge of F5 being a leader for d
 
 .. Note:: The requirements start out easy enough but will get progressively more "Real World" as the labs progress.
 
-**Before Cloud Migration - "The Good Ol Days"**
+**Before Cloud Migration - "The Good Ol' Days"**
 
 .. image:: ./images/pre-migration.png
 
@@ -41,7 +41,7 @@ The AWS cloud environment contains a prebuilt XC Node and a workload hosting a w
 
 The Azure cloud environment contains a prebuilt XC Node and a workload hosting a web frontend.  **You will not have access to the Azure console.**
 
-.. Important:: While we are keeping the labs intentionally simple today, with just a single Data Center and 2 Cloud sites, F5 Distributed Cloud supports much more advanced use-cases. 
+.. Important:: While we are keeping the labs intentionally simple today, with just a single Data Center and 2 CSP's, F5 Distributed Cloud supports much more advanced use-cases. 
 
 .. toctree::
    :maxdepth: 1

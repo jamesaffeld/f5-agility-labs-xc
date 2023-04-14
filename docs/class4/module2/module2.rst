@@ -5,9 +5,9 @@ Module 2: App Connect
 
 **Narrative:** 
 Everything has been running terrific at ACME with your current Network Connect model. Your boss is pleased with your work and has a new assignment for you. 
-ACME has aquired a new company that utilizes Azure IAAS but none of their servers are public facing due to security requriements.
+ACME has aquired a new company that utilizes Azure IAAS but none of their servers are public facing due to security governance. 
 
-ACME wants to implement a globally available frontend that can serve content from either AWS or Azure without giving any of the Azure servers a public IP. 
+ACME wants to implement a globally available frontend that can serve content from either AWS or Azure without directly giving any of the Azure workloads a public IP. 
 Inbound Internet traffic should always be sent to the AWS frontend with the Azure frontend acting as a backup for now.  
 
 The on-prem backend server must be able to scan the private frontend in Azure on port 80. 
