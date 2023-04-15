@@ -15,12 +15,14 @@ Lab 2: Configuring Network Connect (L3/L4 Routing Firewall )
 Now that your XC Node is provisioned, it's time to verify, explore the XC Console and set up Network Connect to establish secure connectivity between the Data Center and AWS networks. 
 After the setup is complete, you will test connectivity and verify network security. 
 
+|
 
 .. image:: ../images/lab2biz.png
 
+|
 
-Verify the XC Node health
----------------------------------------
+Verify the XC Node Health
+---------------------------
 
 If you are not already logged into the console, please do so now by opening the following URL in your browser: 
 
@@ -123,7 +125,9 @@ Configuring Network Connect
 ---------------------------------------
 
 In our lab today, an Ubuntu Server in the UDF environment will simulate the backend. 
-The AWS front end is already deployed along with an XC Node to extend the Customer Edge in the cloud. 
+The AWS frontend workload is already deployed along with an XC Node to extend the Customer Edge in the AWS cloud. 
+
+.. NOTE:: The Data Center backend has a pre-exsiting route to 10.0.3.0/24 and it points to the inside interface of the Data Center XC Node.  
 
 
 .. image:: ../images/netconnlab.png
@@ -201,6 +205,7 @@ Click on the 3 dots at the far right hand side of student-fleet and select **Man
 
 In the next screen click on **Edit Configuration** in the top right of the screen and **Observe** the Fleet Configuration and Network Connectors. 
 
+
 The **Network Connectors** are configured as:
 
 **student-global-connector**
@@ -231,7 +236,7 @@ The **Network Connectors** are configured as:
 
 Also, notice Network Firewall is NOT currently defined. We will come back to that in a few moments. 
 
- Click **Cancel and Exit.**
+Click **Cancel and Exit.**
 
 
 Fleet Label 
@@ -306,39 +311,61 @@ In XC Console, navigate to **Multi-Cloud Network Connect** and then click on **S
 
 Click on **Show Routes** 
 
+|
+
 .. image:: ../images/shroutes.png
 
-Set Virtual Network Type to: **VIRTUAL_NETWORK_SITE_LOACAL_INSIDE** and click the blue **Show routes** button
+|
+
+Set Virtual Network Type to: **VIRTUAL_NETWORK_SITE_LOCAL_INSIDE** and click the blue **Show routes** button
+
+|
 
 .. image:: ../images/shroutes2.png
 
+|
+
 Scroll down to see the AWS subnet route **"10.0.3.0/24** being advertised through the tunnel. 
 
+|
+
 .. image:: ../images/shroutes3.png
+
+|
 
 Routing is good, now let's test some other ports. 
 Go back to the web shell where you ran a ping. We will now test 2 ports that we know the server is listening on. 
 
-Port 80 - Simple Web page
-Port 8080 - Diagnostic tool
+**Port 80** - Simple Web page
+
+**Port 8080** - Diagnostic tool
 
 [FIX ONCE port 80 IS UP on AWS container]
 
-Our first test will be to port 80. In the web shell type: **curl http:/10.0.3.253** 
+Our first test will be to port 80. In the web shell type: **curl http://10.0.3.253** 
+
+|
 
 .. image:: ../images/show req and response.pngFIX
 
-Next, push the up arrow and run the same command but targeted at port 8080 like this: **curl http:/10.0.3.253:8080** 
+|
+
+Next, push the keyboard "up arrow " and run the same command but targeted at port 8080 like this: **curl http://10.0.3.253:8080** 
+
+|
 
 .. image:: ../images/8080.png
+
+|
 
 .. Note:: We now have to close port 8080 per the ACME Corp security department requirement. 
 
 Enhanced Firewall policy
 ---------------------------------
 
-You will now configure the F5 Distributed CLoud Enhanced Firewall to provide network security between these sites. 
+You will now configure the F5 Distributed Cloud Enhanced Firewall to provide network security between these sites. 
 
+[Chas Checking on object limits for EFP's added to fleet]
 .. image:: ../images/efwp.png
 
 
@@ -346,7 +373,7 @@ Sanity Check
 -------------
 **This is what you just deployed.**
 
-[INSERT DIAG HERE]
+.. image:: ../images/lab4rev.png
 
 
 **End of Lab 1**
