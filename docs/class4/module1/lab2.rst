@@ -365,7 +365,7 @@ Enhanced Firewall policy
 
 You will now configure the F5 Distributed Cloud Enhanced Firewall to provide network security between these sites. 
 
-[Chas Checking on object limits for EFP's added to fleet]
+[Chas Checking on object limits for EFP's added to fleet] - answer = 50. Need to make this section read only. 
 .. image:: ../images/efwp.png
 
 
