@@ -50,7 +50,7 @@ Scroll down to where you see **Routes** and click the blue hyperlink "**Configur
 
 |
 
-Click **Add Item**
+Click **Add Item**.
 
 Enter the following values:
 
@@ -59,14 +59,25 @@ Variable                                Value
 ==================================      ==============
 Route Type                              Simple Route
 HTTP Method                             GET
-Path Match                     HTTP
-Headers        **uncheck**
-Origin Pools                              80
-Host Rewrite Method                            See Below 
+Path Match                              Prefix
+Prefix                                  /aws
+Headers                                 Leave Default
+Origin Pools                            See Below
+Host Rewrite Method                     Disable
 ==================================      ==============
 
-
-
+Click **Add Item** again.
+==================================      ==============
+Variable                                Value
+==================================      ==============
+Route Type                              Simple Route
+HTTP Method                             GET
+Path Match                              Prefix
+Prefix                                  /azure
+Headers                                 Leave Default
+Origin Pools                            See Below
+Host Rewrite Method                     Disable
+==================================      ==============
 
 
 
