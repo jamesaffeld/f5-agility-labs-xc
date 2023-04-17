@@ -10,7 +10,7 @@ Your solution must be future-proof to allow for additional backends or frontends
 
 **In Lab 1** we will be deploying an XC Node to establish the Customer Edge (CE) which will provide connectivity to remote environments or sites. 
 
-**In Lab 2** we will configure the XC Node to act as a Software-Defined Router to stitch together the Data Center and AWS networks using Network Connect. 
+**In Lab 2** we will configure the XC Nodes to act as Software-Defined Routers to stitch together the Data Center and AWS networks using Network Connect. 
 
 
 .. image:: ../images/labs.png

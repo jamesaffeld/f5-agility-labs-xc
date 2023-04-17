@@ -5,15 +5,13 @@ Lab 2: Configuring Network Connect (L3/L4 Routing Firewall )
 
 *Verify the XC Nodes health. 
 
-*Configure Network Connect to connect the Data Center networkto the AWS Network.
+*Configure Network Connect to connect the Data Center network to the AWS Network.
 
-*Test connectivity and configure Enhance Firewall for network security
-
-*Review network security events in the XC console.
+*Test connectivity and configure Enhanced Firewall for network security
 
 **Narrative:** 
 Now that your XC Node is provisioned, it's time to verify, explore the XC Console and set up Network Connect to establish secure connectivity between the Data Center and AWS networks. 
-After the setup is complete, you will test connectivity and verify network security. 
+After the setup is complete, you will test connectivity and configure network security. 
 
 |
 
@@ -48,7 +46,7 @@ From this Dashboard you can note the current **Site Admin State, Provider, SW ve
 **Please DO NOT click "Upgrade" on any of the Sites!**
 
 
-Instead, **Click** on the three dots under the **Actions** column at the far right of the screen of **"your animal"**  Site and click on **Manage Configuration**. 
+Instead, **Click** on the three dots under the **Actions** column at the far right of the screen of **"your animal"**  Site and click on **Manage Configuration**. In this screenshot I was **rested-tiger**. 
 
 |
 
@@ -106,7 +104,7 @@ This will load the API specification for a Customer Edge Node. Review briefly an
 
 In the **Site List** screen, click on your Customer Edge Node **animal name**.  
 
-The default landing is a Dashboard giving you a summary of the Customer Edge Node.  **Briefly** explore the extensive menus and analytics at the top of the screen.
+The default landing is a Dashboard giving you a detailed summary of the Customer Edge Node.  **Briefly** explore the extensive menus and analytics at the top of the screen.
 
 |
 
@@ -127,7 +125,7 @@ Configuring Network Connect
 In our lab today, an Ubuntu Server in the UDF environment will simulate the backend. 
 The AWS frontend workload is already deployed along with an XC Node to extend the Customer Edge in the AWS cloud. 
 
-.. NOTE:: The Data Center backend has a pre-exsiting route to 10.0.3.0/24 and it points to the inside interface of the Data Center XC Node.  
+.. NOTE:: The Data Center backend has a pre-existing route to 10.0.3.0/24 and it points to the inside interface of the Data Center XC Node.  The AWS workload has a route to 10.1.1.0/24 that points to the inside interface of the Data Center XC Node. 
 
 
 .. image:: ../images/netconnlab.png
@@ -151,7 +149,7 @@ Confirm you are still in the **Multi-Cloud Network Connect** Console under **Sit
 
 On the left side menu, navigate to  **Manage >> Networking >> Virtual Networks**. 
 
-**Observe** the pre-configured **student-global** Virtual Network. Click the the dots under the **Action** menu for **student-global** and look at the very simple config. 
+**Observe** the pre-configured **student-global** Virtual Network. Click the the dots under the **Action** menu for **student-global** and then **Manage Config**. Note the very simple config. 
 
 |
 
@@ -253,7 +251,7 @@ A site can have at most one known_label of type ves.io/fleet and hence belongs t
 
 Bringing up the Connection
 ----------------------------
-From your UDF environment browser tab,  click on Access >> Web Shell on the Ubuntu Client. This will open a new tab to a Web Shell. 
+From your UDF environment browser tab,  click on **Access >> Web Shell** on the Ubuntu Client. This will open a new tab to a Web Shell. 
 
 |
 
@@ -307,7 +305,7 @@ Check back on your web shell tab with the ping going. Success!!
 .. important:: If you want to tear down this connectivity it is as easy as removing the label. 
 
 
-In XC Console, navigate to **Multi-Cloud Network Connect** and then click on **Site List,**, click directly on **"your animal name"** and click on tools menu on the top, far right. 
+In XC Console, navigate to **Multi-Cloud Network Connect**, click on **Site List**, click directly on **"your animal name"** and finally click on the **Tools** menu on the top, far right. 
 
 Click on **Show Routes** 
 
@@ -340,17 +338,15 @@ Go back to the web shell where you ran a ping. We will now test 2 ports that we 
 
 **Port 8080** - Diagnostic tool
 
-[FIX ONCE port 80 IS UP on AWS container]
-
-Our first test will be to port 80. In the web shell type: **curl http://10.0.3.253** 
+Our first test will be to port 80. In the web shell type: **curl --head http://10.0.3.253** 
 
 |
 
-.. image:: ../images/show req and response.pngFIX
+.. image:: ../images/curl.png
 
 |
 
-Next, push the keyboard "up arrow " and run the same command but targeted at port 8080 like this: **curl http://10.0.3.253:8080** 
+Next, push the keyboard "up arrow " and run the same command but targeted at port 8080 like this: **curl --head http://10.0.3.253:8080** 
 
 |
 
@@ -360,23 +356,122 @@ Next, push the keyboard "up arrow " and run the same command but targeted at por
 
 .. Note:: We now have to close port 8080 per the ACME Corp security department requirement. 
 
-Enhanced Firewall policy
+Enhanced Firewall Policy
 ---------------------------------
 
 You will now configure the F5 Distributed Cloud Enhanced Firewall to provide network security between these sites. 
 
-[Chas Checking on object limits for EFP's added to fleet] - answer = 50. Need to make this section read only. 
+.. Note:: Due to lab architecture, we will only be able to configure the policies but not apply. We will show you the final step to apply your policy for reference, but you will not actually be able to apply or test. This is the last "Read Only" lab section. Our apologies for the inconvenience. 
+
+
+Navigate to **Manage >> Firewall >> Enhanced Firewall Policies** and click **Add Enhanced Firewall Policy**.  
+
+|
+
+=========================================    =====
+Variable                                     Value
+=========================================    =====
+Name                                         [animal-name]-fwp
+Select Enhanced Firewall Policy Rule Type    Custom Enhanced Firewall Policy Rule Selection
+=========================================    =====
+
+
+Click the blue **Configure** hyperlink.
+
+|
+
 .. image:: ../images/efwp.png
 
+|
+
+Click on **Add Item** to bring up the Rules creation screen. Here you will notice several powerful **"Enhanced"** Source and Destination Traffic filters.  
+
+
+=================================               =====
+Variable                                        Value
+=================================               =====
+Name                                            [animal-name]-allow-80
+Source Traffic Filter                           IPv4 Prefix List >> Click Configure and add 10.1.1.0/24 then click **Apply**.
+Destination Traffic Filter                      IPv4 Prefix List >> Click Configure and add 10.0.3.0/24 then click **Apply**.
+Select Type of Traffic to Match                 Match Protocol and Port Ranges
+Match Protocol and Port Ranges                  TCP >> click **Add Item** and add **80**. 
+Action                                          Allow
+=================================               =====
+
+
+|
+
+.. image:: ../images/allow80.png
+
+|
+
+Click **Apply** and your screen should look like this: 
+
+|
+
+.. image:: ../images/fwver.png
+
+|
+
+Now we will create the **default deny** to prevent any other traffic between these two networks. 
+
+Click **Add Item** again to add another rule to the **Enhanced Firewall Policy**. 
+
+=================================               =====
+Variable                                        Value
+=================================               =====
+Name                                            [animal-name]-deny-all
+Source Traffic Filter                           IPv4 Prefix List >> Click Configure and add 10.1.1.0/24 then click **Apply**.
+Destination Traffic Filter                      IPv4 Prefix List >> Click Configure and add 10.0.3.0/24 then click **Apply**.
+Select Type of Traffic to Match                 Match All Traffic
+Action                                          Deny
+=================================               =====
+
+|
+
+.. image:: ../images/denyall.png
+
+|
+
+
+Click **Apply** and your screen should look like this: 
+
+
+|
+
+
+.. image:: ../images/fwver2.png
+
+|
+
+Click **Apply** and **Save and Exit**.
+
+|
+
+
+.. image:: ../images/save.png
+
+|
+
+Summary
+---------------------------------
+You have now created the firewall policy necessary to secure these two networks. Outside of the lab envirnoment you would now add this policy to the fleet by managing your fleet and adding an Enhanced Firewall policy.
+
+|
+
+
+.. image:: ../images/fleetpol.png
+
+|
 
 Sanity Check
 -------------
 **This is what you just deployed.**
 
-.. image:: ../images/lab4rev.png
+.. image:: ../images/lab2rev.png
 
 
-**End of Lab 1**
+**End of Lab 2**
 
 
 

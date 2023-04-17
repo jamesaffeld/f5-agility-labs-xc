@@ -35,13 +35,13 @@ Given your current predicament and industry knowledge of F5 being a leader for d
 Lab Environment
 ---------------
 
-The on-prem environment is emulated by the F5 UDF environment and contains an Ubuntu Server and an XC Node that you will be configuring in Lab 1. 
+The Data Center environment is emulated by the F5 UDF lab framework and contains an Ubuntu Server and an XC Node that you will be configuring in Lab 1. 
 
 The AWS cloud environment contains a prebuilt XC Node and a workload hosting a web frontend.  **You will not have access to the AWS console.**
 
 The Azure cloud environment contains a prebuilt XC Node and a workload hosting a web frontend.  **You will not have access to the Azure console.**
 
-.. Important:: While we are keeping the labs intentionally simple today, with just a single Data Center and 2 CSP's, F5 Distributed Cloud supports much more advanced use-cases. 
+.. Important:: While we are keeping the labs intentionally simple today with just a single Data Center and 2 CSP's, F5 Distributed Cloud supports much more advanced use-cases. 
 
 .. toctree::
    :maxdepth: 1

@@ -3,21 +3,21 @@ Lab 1: Building an XC Node (CE)
 
 **Objective:**
 
-*Get familiar with the UDF lab environment. 
+*Get familiar with the UDF Lab Environment. 
 
-*Deploy an XC node to define the Customer Edge at the UDF Data Center.
+*Deploy an XC Node to define the Customer Edge at the UDF Data Center.
 
-*Explore and become familiar with the Distributed Cloud console.
+*Explore and become familiar with the Distributed Cloud Console.
 
 **Narrative:** 
 
-After consulting with your trusted F5 Solutions Engineer, you decide to setup F5 Distributed Cloud Network Connect. This will allow for privately routed network connectivity between two disparate networks. 
-You also found out that you can use the F5 Distributed Cloud Enhanced Firewall to provide network security between the sites. 
-You already did a push button deployment of the AWS XC Node to define the Customer Edge in the ACME VPC, which only took a few moments. 
+After consulting with your trusty F5 Solutions Engineer, you decide to setup F5 Distributed Cloud, Network Connect. This will allow for privately routed network connectivity between two disparate networks. 
+You also found out that you can use the F5 Distributed Cloud, Enhanced Firewall to provide network security between Sites. 
+We already did a push-button deployment of the AWS XC Node to define the Customer Edge in the ACME VPC, which only took a few moments. 
 
-Now, Lab 1 starts right after you have loaded the OVA on your Data Center's local hypervisor (VMWARE or KVM). 
+Now, Lab 1 starts right after you have loaded the downloadable XC Node OVA on to your Data Center's local hypervisor (VMWARE or KVM). 
 
-.. NOTE:: Your Data Center environment is the F5 UDF platform, which uses KVM as it's virtualization technology. The OVA has already been imported for you. We also have hardware and container deployment options for the XC Node. 
+.. NOTE:: Your Data Center environment in these labs is the F5 UDF platform, which uses KVM as it's underlying virtualization technology. The OVA has already been imported for you. We also have hardware and container deployment options for Production XC Nodes. 
 
 |
 
@@ -73,7 +73,7 @@ In the resulting window you can observe the **Work domains and skill level** sec
 
 |
 
-For informational purposes only:
+**For informational purposes only:**
 
 |
 
@@ -86,8 +86,8 @@ For informational purposes only:
 
 
 Namespaces, which provide an environment for isolating configured applications or enforcing role-based access controls, are leveraged
-   within the F5 Distributed Cloud Console.  For the purposes of this lab, each lab attendee has been pre-assigned a unique **namespace** 
-   for all tasks performed in this lab.
+within the F5 Distributed Cloud Console.  For the purposes of this lab, each lab attendee has been pre-assigned a unique **namespace** 
+for all tasks performed in this lab.
 
 From the **Select service** menu, click on **Web App & API Protection**. 
 
@@ -98,8 +98,7 @@ From the **Select service** menu, click on **Web App & API Protection**.
 |
 
 In the **Web App & API Protection Security Dashboard** configuration screen **observe** the browser URL. In the URI path, locate the **<adjective-animal>** namespace that you have
-   been assigned. It will be located in the portion of the URI path between */namespaces/* and */sites/* as shown in this example 
-   **…/namespaces/<namespace>/sites/…**. 
+been assigned. It will be located in the portion of the URI path between */namespaces/* and */sites/* as shown in this example: **…/namespaces/<namespace>/sites/…**. 
    
 **Note your namespace as it will be used throughout the labs today.**
 
@@ -118,14 +117,14 @@ In the **Web App & API Protection Security Dashboard** configuration screen **ob
 **Site Token**
 ----------------
 
-Soon, you will be configuring an XC Node in the F5 UDF Lab Environment (Data Center) that will need a way to register itself to the Distributed Cloud Infrastructure and associate it with your tenant. For this you will need a Site Token. 
+Soon, you will be configuring an XC Node in the F5 UDF Lab Environment (Data Center) that will need a way to authenticate to the Distributed Cloud Infrastructure and associate it with your tenant. For this, you will need a Site Token. 
 
 If you are not already logged into the console, please do so now by opening the following URL in your browser: 
 
 https://f5-xc-lab-mcn.console.ves.volterra.io/
 
 
-From the **Select service** menu, click on **Multi-Cloud Network Connectn**. 
+From the **Select service** menu, click on **Multi-Cloud Network Connect**. 
 
 |
 
@@ -133,10 +132,10 @@ From the **Select service** menu, click on **Multi-Cloud Network Connectn**.
 
 |
 
-On the side menu go down to Manage, then select **Site Management > Site Tokens**
+On the side menu go down to **Manage**, then select **Site Management >> Site Tokens**
     
 In the lab we have generated a Site Token for you to use named **student-ce-site**.  
-In your production environment you will need to create your own Site Token to register your Customer Edge node.  
+In your production environment you will need to create your own Site Token to register your Customer Edge Node, which is literally two clicks and a name. Very simple! 
 
 |
 
@@ -163,7 +162,7 @@ In your browser, you should have a tab open to the UDF course. Under the F5 Dist
 
 |
 
-This should prompt you for authentication and then open the Customer Edge node Admin portal.
+This should prompt you for authentication and then open the Customer Edge Node Admin portal.
 
 Type in the default username/password:
 
@@ -190,13 +189,15 @@ You will be prompted to change the password at the initial log in. **Make a ment
 
 After you set the password, the services will need to restart and then the Customer Edge node will present the Dashboard
 
+.. Note:: You may have to Refresh your browser and log in again. 
+
 |
 
 .. image:: ../images/restart.png 
 
 |
 
-Once all services are up and running you should see the Dashboard:
+Once all services are up and running you should see the Dashboard which will have various colors and state as shown:
 
 |
 
@@ -204,13 +205,14 @@ Once all services are up and running you should see the Dashboard:
 
 |
 
-You will notice the XC Node is not configured yet.  Also notice the VP Manager Status.  If you mouse-over each of the icons, the specific services will report their status in addition to the status reflected by the icon.
+If you mouse-over each of the icons, the specific services will report their status in addition to the status reflected by the icon.
 
-Mouse over each of the components under VP Manager Status and note the components and their condition.  You can also click on “Show full status” and see a JSON report that is used to present the VP Manager Status.
+Mouse over each of the components under VP Manager Status and note the components and their condition.  You can also click on **“Show full status”** and see a JSON report that is used to present the VP Manager Status in detail.
 
 You can also scroll down and see hardware details that describe the platform that the Customer Edge is installed on. 
 
-Click **Configure Now**
+
+Click the blue **Configure Now** button.
 
 |
 
@@ -218,9 +220,9 @@ Click **Configure Now**
 
 |
 
-This will take you to the Customer Edge Device Configuration page.
+This will take you to the **Customer Edge Device Configuration** page.
 
-Set the following parameters and leave everything as default.
+Set the following parameters and leave everything else as default:
 
 ==============================  =====
 Variable                        Value
@@ -248,7 +250,7 @@ After you save the configuration, you will be taken back to the Dashboard, notic
 
 |
 
-**You can safely ignore this benign timing error due to the UDF lab environment.**
+**If you encounter it, you can safely ignore this benign timing error due to the UDF lab environment.**
 
 |
 
@@ -276,7 +278,7 @@ On the side menu go down to **Manage >> Site Management >> Registrations.**
 
 |
 
-The Customer Edge node you configured from the previous step should appear on this list, if not give it a couple minutes and refresh the screen by clicking the **Refresh button** at the top right-hand corner.  
+The Customer Edge node you configured from the previous step should appear on this list, if not give it a couple moments and refresh the screen by clicking the **Refresh button** at the top right-hand corner.  
 
 |
 
@@ -286,16 +288,16 @@ The Customer Edge node you configured from the previous step should appear on th
 
 .. Tip:: This process can take a few minutes for the node to register with Distributed Cloud. 
 
-Once the node appears in the Registration list, accept the registration of the node by clicking on the blue check mark.
+Once the Node appears in the Registration list, accept the registration by clicking on the blue check mark.
 
 **Click the blue check mark** to accept the registration. 
 
 .. Note::  If you DO NOT see a blue check mark, it's likely your browser width is NOT wide enough.  Simply increase the width of the browser and you should see the blue checkmark to approve the registration.
 
 
-Once you have clicked the checkmark, the console will bring up the Registration Acceptance menu which shows all the settings of the Customer Edge node.  Note the parameters you’ve entered from the previous exercise are pre-populated into the appropriate fields. 
+Once you have clicked the checkmark, the console will bring up the Registration Acceptance menu which shows all the settings of the Customer Edge node.  Note the parameters you’ve entered from the previous exercise are populated into the appropriate fields. 
 
-.. Important:: Look at the Cluster Size parameter and notice this is set to 1.  In this lab, we will only deploy a single node cluster and thus leave this setting as 1.  In a production environment, the best practice is to deploy a 3-node cluster minimum.  In that case, the Cluster Size parameter would be set to 3 so an appropriately sized cluster can be formed.
+.. Important:: Look at the Cluster Size parameter and notice this is set to 1.  In this lab, we will only deploy a single-node-cluster and thus leave this setting as 1.  In a production environment, the best practice is to deploy a 3-node-cluster minimum.  In that case, the Cluster Size parameter would be set to 3 so an appropriately sized cluster can be formed.
 
 **Leave the cluster size set to 1**
 
@@ -313,8 +315,9 @@ Scroll down to Site to Site Tunnel Type and click on the drop down arrow
 
 |
 
-Select **IPSEC or SSL** from the list.  This setting determines the VPN connectivity protocols used. The XC Node will autamatically bring up redundant tunnels to two different Regional Edges. 
+This setting determines the VPN connectivity protocols used between the CE and the Regional Edges. The XC Node will autamatically bring up redundant tunnels to two different RE's. 
 These tunnels are self-healing and can fallback when using the configuration setting of IPSEC or SSL.
+Select **IPSEC or SSL** from the list.  
 
 |
 
@@ -350,6 +353,8 @@ You may also observe the Health score going up and down as services are spun up 
 
 
 The end result should look something like the following screen where the node is green at 100 percent health and has the latest software version. 
+
+.. Important:: Do not move on to Lab 2 until the CE is fully provisioned and **Online**. 
 
 |
 

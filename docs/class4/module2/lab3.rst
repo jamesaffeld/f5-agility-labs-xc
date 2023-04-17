@@ -88,33 +88,33 @@ Variable                        Value
 Name                            animal-name-aws-pool
 Origin Server Port              80
 Origin Servers                  See Below 
+Health Checks                   See Below 
 ==============================  =====
 
 **Origin Servers:** Click **Add Item**
 
-[NEED TO UPDATE TO USE PUBLIC IP TO FOLLOW LAB NARRATIVE]Use - http://public.lab.f5demos.com/
+In the dropdown keep:  **Public DNS Name of Origin Server** and type: **public.lab.f5demos.com** and click **Apply**. 
 
-Hit the dropdown for **Select Type of Origin Server** and choose **IP Address of Origin Server on given Sites**. 
+**Health Checks:** Under "Health Check object" click the **Select Item*** dropdown and click **Add Item**. 
 
-==============================  =====
-Variable                        Value
-==============================  =====
-IP                              10.0.3.253
-Origin Server Port              80
-Site or Virtual Site            Site
-Site:                           **system/student-awsnet**
-Select Network on the site      Inside Network
-==============================  =====
+For the Name use: **[animal-name]-http** and take the rest as defaults. 
 
-Click **Apply**. 
-
-Your config should look like this: 
+Click **Continue**
 
 |
 
-.. image:: ../images/awsorig.png
+.. image:: ../images/health.png
 
 |
+
+Your Origin Pool should now look like this: 
+
+|
+
+.. image:: ../images/origaws.png
+
+|
+
 
 Leave everything else as **default** and click **Save and Exit**.
 
@@ -131,11 +131,11 @@ Variable                        Value
 Name                            animal-name-azure-pool
 Origin Server Port              80
 Origin Servers                  See Below 
+Health Checks                   [animal-name]-http
 ==============================  =====
 
-
+**Origin Servers:** 
 Hit the dropdown for **Select Type of Origin Server** and choose **IP Address of Origin Server on given Sites**. 
-
 
 ==============================  =====
 Variable                        Value
@@ -153,13 +153,13 @@ Your config should look like this:
 
 |
 
-.. image:: ../images/azureorig.png
+.. image:: ../images/origazure.png
 
 |
 
 Leave everything else as **default** and click **Save and Exit**.
 
-Now that we have defined our Origin Server pools which are overlapping private IP workloads in AWS and Azure, we will set up the App Connect Proxy to provide a Global Frontend.
+Now that we have defined both of our Origin Server pools which are a puiblic IP in AWS and a private IP in Azure, we will set up the App Connect Proxy to provide a Global Frontend to load balance them.
 
 Global Frontend
 ----------------------------
