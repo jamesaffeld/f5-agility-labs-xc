@@ -7,10 +7,14 @@ If testing from old blueprint a static route to 10.0.3.253 must be added to the 
 **The following items need to be addressed as of 04/18/22**
 
 1. Final Blueprint update (Chas & LeeAnn)
-3. Lab 3 - End needs finished.  (Brad)
-4. Lab 4 - Work out internal load balancer issue (can't LB to azure ---troubleshoot) (Brad & Chas)
-5. Lab 5 - Add resource to AWS workload (image, page whatever) for /aws. Add resource to Azure workoad for /azure (Chas)
-6. Determine best section to fill out with exploritory work. analytics, dashboard etc. (Brad)
+
+2. Lab 3 - End needs finished.  (Brad)
+
+3. Lab 4 - Work out internal load balancer issue (can't LB to azure ---troubleshoot) (Brad & Chas)
+
+4. Lab 5 - Add resource to AWS workload (image, page whatever) for /aws. Add resource to Azure workoad for /azure (Chas)
+
+5. Determine best section to fill out with exploritory work. analytics, dashboard etc. (Brad)
 
 
 
