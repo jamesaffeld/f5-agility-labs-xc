@@ -125,7 +125,7 @@ Configuring Network Connect
 In our lab today, an Ubuntu Server in the UDF environment will simulate the backend. 
 The AWS frontend workload is already deployed along with an XC Node to extend the Customer Edge in the AWS cloud. 
 
-.. NOTE:: The Data Center backend has a pre-existing route to 10.0.3.0/24 and it points to the inside interface of the Data Center XC Node.  The AWS workload has a route to 10.1.1.0/24 that points to the inside interface of the Data Center XC Node. 
+.. NOTE:: The Data Center backend has a pre-existing route to 10.0.3.0/24 and it points to the inside interface of the Data Center XC Node.  The AWS workload has a route to 10.1.1.0/24 that points to the inside interface of the AWS XC Node. 
 
 
 .. image:: ../images/netconnlab.png
