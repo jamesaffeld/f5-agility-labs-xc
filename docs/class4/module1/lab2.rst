@@ -361,7 +361,7 @@ Enhanced Firewall Policy
 
 You will now configure the F5 Distributed Cloud Enhanced Firewall to provide network security between these sites. 
 
-.. Note:: Due to lab architecture, we will only be able to configure the policies but not apply. We will show you the final step to apply your policy for reference, but you will not actually be able to apply or test. This is the last "Read Only" lab section. Our apologies for the inconvenience. 
+.. Note:: Due to lab architecture, we will only be able to configure the policies but not apply. We will show you the final step to apply your policy for reference, but you will not actually be able to apply or test.  
 
 
 Navigate to **Manage >> Firewall >> Enhanced Firewall Policies** and click **Add Enhanced Firewall Policy**.  
@@ -463,6 +463,68 @@ You have now created the firewall policy necessary to secure these two networks.
 .. image:: ../images/fleetpol.png
 
 |
+
+Logging
+---------
+Customers often ask about the logging options with F5 Distributed Cloud. THere are two main options for logging. 
+
+1. Global Logging - Logging related to activities that occur within Distributed cloud and on the Regional Edges such as load balancers or WAAP/Bot policy.
+
+2. Site Local Logging - Logging related to activities that occur within the Customer Edge Boundary such as load blanacers or WAAP/Bot policy runnning locally on an XC Node.
+
+.. Note:: This is the last "Read Only" lab section. Our apologies for the inconvenience.
+
+**Global Logging**:
+
+To observe **(NOT configure)** the Global Logging configuration options, in the side-menu, browse to **Manage >> Log Management >> Global Log Receiver** and click **Add Global Log Receiver**.
+
+Take particular notice of the different **Log Types** and **Receiver Configurations** which include ASW, Azure and Splunk options to namedrop a few. 
+
+|
+
+
+.. image:: ../images/globlog.png
+
+|
+
+Click **Cancel and Exit** and Discard any changes.
+
+
+**Site Local Logging**:
+
+To observe **(NOT configure)** the Site Local Logging configuration options, in the side-menu, browse to **Manage >> Log Management >> Log Receiver** and click **Add Log Receiver**.
+
+Click on the **Show Advanced Fields** button on the right and take note of the **Where** 
+
+Click **Cancel and Exit** and Discard any changes.
+
+
+|
+
+
+.. image:: ../images/locallog.png
+
+|
+
+**Applying Site Local Logging**:
+
+To observe **(NOT configure)** the application of the Site Local Logging profile, browse to **Manage >> Site Management >> Fleets**, click the **3 button** Action menu and click **Manage Configuration**. 
+
+Scroll down to observe the **Logs Streaming** field under **Advanced Configuration**. In production you would apply enable this and select your **Log Receiver** profile.
+
+|
+
+
+.. image:: ../images/logs.png
+
+|
+
+Click **Cancel and Exit**.
+
+You can now feel free to explore the **Multi-Cloud Network Connect** Site menus while everyone is getting caught up. 
+
+Click on **Site Map**, **Site Security**, which is where we would review our firewall logs in production, and finally, head down to the **Service Info** Section and click on **About**. 
+
 
 Sanity Check
 -------------

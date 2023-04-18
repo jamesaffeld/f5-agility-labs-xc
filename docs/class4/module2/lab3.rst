@@ -52,7 +52,7 @@ Leverage App Connect for secure site to site connectivity regardless of IP overl
 Multi-Cloud App Connect
 ----------------------------
 
-From the **Select service** menu, click on **Multi-Cloud App Connect** and then click on **Site List**.
+From the **Select service** menu, click on **Multi-Cloud App Connect** and then click on **App Site List**.
 
 Notice **your animal name** CE Node is available for App Connect configurations but shows a color status as Grey because of a Health Score of "Unused". Let's get an App Connect config going!
 
@@ -215,6 +215,10 @@ You should now see your Globally Available frontend in the **HTTP Load Balancers
 
 |
 
+Testing
+---------------------
+
+
 Go ahead and open up a **Command Prompt** or **Terminal** on your personal machine and type the following command: 
 
 **nslookup [animal-name]-acme-frontend.lab-msc.f5demos.com** and note the IP address that is returned. 
@@ -229,10 +233,106 @@ In my example, I am using a terminal on MAC and my animal-name was **rested-tige
 
 Now open up a new tab in your browser and try http://[animal-name]-acme-frontend.lab-msc.f5demos.com
 
-TODO
-[INSERT screenshots of aws site and section about analytics]
-[Add healthcheck to origin pools or priority failover doesnt occur.]
-[Change AWS pool healthcheck to enable TLS to force failover]
+If you reached this page, you set it up right! Nice work. 
+
+|
+
+.. image:: ../images/awspub.png
+
+|
+
+Hit **[Shift + Refresh]** a few times in your browser and make sure you are staying on the same site. You should NOT be seeing a **blue page** at any point. 
+
+
+In **XC Console**, navigate to **Manage >> Load Balancers >> Origin Pools**, click on the **3 Button** Actions Menu and choose **Manage Configuration** for your **[animal-name]-aws-pool. 
+
+Click **Edit Configuration** in the upper right and then scroll to the bottom of the **AWS origin Servers** configuration screen. 
+
+Under **TLS**, hit the dropdown and choose **Enable** and click **Save and Exit**.
+
+|
+
+.. image:: ../images/tlsenable.png
+
+|
+
+
+.. Important:: What you are doing here, is enabling TLS on the backend connection to the Origin Server of the AWS pool. This will fail as the Server is not expecting TLS which will effectively cause the monitors to fail and take down the AWS pool and allow us to test the Azure failover as if the AWS server itself was failing. 
+
+**Check it out....**
+
+Go back to your browser tab that you had open to http://[animal-name]-frontend.lab-mcn.f5demos.com and hit **[Shift + Refresh]**.
+
+|
+
+.. image:: ../images/azurepub.png
+
+|
+
+Go back to XC Console and edit the AWS pool again to disable TLS and bring the AWS site back online. 
+
+|
+
+.. image:: ../images/diabletls.png
+
+|
+
+Click **Save and Exit**.
+
+Go back to your browser tab that you had open to http://[animal-name]-frontend.lab-mcn.f5demos.com and hit **[Shift + Refresh]**.
+
+You should be back to the AWS page now. 
+
+|
+
+.. image:: ../images/awspub.png
+
+|
+
+**Testing Load Balancing**
+
+Although this isn't an ACME requirement at the moment, you decide to test an Active/Active pool configuration. 
+Currrently, you have a Global frontend [http://animal-name-acme-frontend.lab-mcn.f5demos.com] that points to a pool with a public EC2 workload in AWS and a pool with a private IP workload in Azure sitting behind the CE.
+You are configured for Active/Standby load-balancing of the pools due to the priority setting in the pool. 
+
+
+In **XC Console**, navigate to **Manage >> Load Balancers**,  click on the **3 Button** Actions Menu and choose **Manage Configuration** for your **[animal-name]-acme-frontend. 
+
+Click **Edit Configuration** in the upper right and then click the **pencil/edit** icon next to the Azure Origin Pool. 
+
+|
+
+.. image:: ../images/editazure.png
+
+|
+
+Change the priority to **1**, click **Apply** and **Save and Exit**.
+
+Go back to your browser tab that you had open to http://[animal-name]-frontend.lab-mcn.f5demos.com and hit **[Shift + Refresh]**.
+
+
+|
+
+.. image:: ../images/weird-results.png
+
+|
+
+Dashboard and Analytics
+-------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Sanity Check

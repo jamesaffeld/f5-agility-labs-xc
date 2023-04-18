@@ -1,14 +1,19 @@
 TO BE DONE
 ===========
 
-NOTE - Lab 1-3 are ready to test. Lab 3 needs a little more added to the end (todo Brad)
-If testing from old blueprint a static route to 10.0.3.253 must be added to the ubuntu client pointing to 10.1.1.5 gw. 
+NEW Blueprint: Agility 2023 - F5 XC - Intro to MCN https://udf.f5.com/b/e7b1b7be-fc0e-467d-a598-d3fa4567ba84#documentation
 
-**The following items need to be addressed as of 04/18/22**
+NOTE - Lab 1-3 are ready to test. 
 
-1. Final Blueprint update (Chas & LeeAnn)
+**The following items need to be addressed as of 04/19/22**
 
-2. Lab 3 - End needs finished.  (Brad)
+1. Final Blueprint update (Chas & LeeAnn) 
+4/19 note 12AM EST - I added everything needed for this particular lab into the blueprint above (net-tools and persistent static route). BP was nominated and accepted.
+
+
+2. Lab 3 - End needs finished.  (Brad) 
+4/19 note 12AM EST - Finished with NOTE:
+Weirdness at end of Lab 3 load balancing - see screenshot in lab. mixed graphics from both sites when [Shift + refresh]
 
 3. Lab 4 - Work out internal load balancer issue (can't LB to azure ---troubleshoot) (Brad & Chas)
 
