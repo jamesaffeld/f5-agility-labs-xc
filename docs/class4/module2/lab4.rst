@@ -114,4 +114,6 @@ Sanity Check
 **This is what you just deployed.**
 
 
+**We hope you enjoyed this lab!**
 
+**End of Lab 4**

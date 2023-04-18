@@ -98,6 +98,8 @@ Sanity Check
 -------------
 **This is what you just deployed.**
 
-Thank you for completing the lab!
+**We hope you enjoyed this lab!**
+
+**End of Lab 5**
 
 

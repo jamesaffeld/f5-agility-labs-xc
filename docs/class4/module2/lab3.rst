@@ -159,7 +159,7 @@ Your config should look like this:
 
 Leave everything else as **default** and click **Save and Exit**.
 
-Now that we have defined both of our Origin Server pools which are a puiblic IP in AWS and a private IP in Azure, we will set up the App Connect Proxy to provide a Global Frontend to load balance them.
+Now that we have defined both of our Origin Server pools which are a public IP in AWS and a private IP in Azure, we will set up the App Connect Proxy to provide a Global Frontend to load balance them.
 
 Global Frontend
 ----------------------------
@@ -257,7 +257,7 @@ Under **TLS**, hit the dropdown and choose **Enable** and click **Save and Exit*
 |
 
 
-.. Important:: What you are doing here, is enabling TLS on the backend connection to the Origin Server of the AWS pool. This will fail as the Server is not expecting TLS which will effectively cause the monitors to fail and take down the AWS pool and allow us to test the Azure failover as if the AWS server itself was failing. 
+.. Important:: What you are doing here, is enabling TLS on the backend connection to the Origin Server of the AWS pool. This WILL FAIL, as the Server is not expecting TLS which will effectively cause the monitors to fail. This will take down the AWS pool and allow us to test the Azure failover as if the AWS workload itself was failing. 
 
 **Check it out....**
 
@@ -273,7 +273,7 @@ Go back to XC Console and edit the AWS pool again to disable TLS and bring the A
 
 |
 
-.. image:: ../images/diabletls.png
+.. image:: ../images/disabletls.png
 
 |
 
@@ -320,20 +320,107 @@ Go back to your browser tab that you had open to http://[animal-name]-frontend.l
 Dashboard and Analytics
 -------------------------
 
+Now that we've sent several requests to our shiny new **Globally Available Frontend**, we can take a look at the traffic dashboards. 
+
+In **XC Console** >> **Multi-Cloud App Connect** >> **Virtual Hosts** click on **HTTP Load Balancers**. 
+
+Click directly on your **[animal-name-scme-frontend]**.
+
+|
+
+.. image:: ../images/lbs.png
+
+|
+
+This will take you to the **Performance Monitoring** Dashboard. If you took a break or don't see any live traffic, try tuning your time-frame. 
+
+|
+
+.. image:: ../images/time.png
+
+|
+
+You should see a number of metrics including a **Application Health** score which may NOT be at **100** due to the AWS site being offline earlier when we tested failover.
+
+|
+
+.. image:: ../images/metrics.png
+
+|
+
+Notice the invaluable **End to end Latency** analytic. Click on the **Metrics** tab. 
+
+|
+
+.. image:: ../images/met1.png
+
+|
+
+Click on the **Health** Percent metric over on the right side. Use the time-sliders at the bottom to try and zoom in to the approximate time when the applications health was poor. 
 
 
+|
+
+.. image:: ../images/timeslide.png
+
+|
+
+In my example, I am zooming in to approx 12:33AM and can click the color block to get a filtered view of the requests as they were being served at that time. 
+
+|
+
+.. image:: ../images/timeslide2.png
+
+|
+
+We can confirm that the Standby Azure workload was sure enough serving up requests during that time. 
+
+|
+
+.. image:: ../images/requests.png
+
+|
+
+Click the **Traffic Tab** in the top menu and change your time-frame back to **1 hour**. 
+
+This graph shows you a visual representation on where your traffic is ingressing our Regional Edges. In my example below, I am local to the DC area, so you can see I consistently hit the DC12 RE in Ashburn Virginia. 
+
+You may see different Source Sites depending where you are geographically located. In production you would see several source sites here if your customer traffic is geographically diverse. 
 
 
+You can also see the load balancer name and the Origin Servers to the right. If you hover over them you will get a Request Rate metric.
 
+|
 
+.. image:: ../images/traffic.png
 
+|
 
+Click the **Origin Servers Tab** in the top menu and change your time-frame to **1 hour**. At the bottom left, change your setting to **50** items per page. 
 
+Why do you think there are so many Origin Servers showing for the AWS EC2 workload DNS name?
 
+|
 
+.. image:: ../images/originserve.png
 
+|
 
+Click the **Requests Tab** in the top menu and change your time-frame to **1 hour**. At the bottom left, change your setting to **50** items per page. 
 
+The request log has a wealth of information. Literally everything about the request is logged and analyzed.
+
+Choose any request in the log and click the **expand** arrow next to the time-stamp. 
+
+Every request has built in End-to-End analytics. You can also click on **JSON** to see the request log in JSON format. 
+
+|
+
+.. image:: ../images/rl.png
+
+|
+
+Feel free to explore additional requests and/or fields while other students are getting caught up. 
 
 Sanity Check
 -------------
@@ -345,7 +432,9 @@ Sanity Check
 
 |
 
+**We hope you enjoyed this lab!**
 
+**End of Lab 3**
 
 
 

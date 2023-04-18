@@ -466,11 +466,11 @@ You have now created the firewall policy necessary to secure these two networks.
 
 Logging
 ---------
-Customers often ask about the logging options with F5 Distributed Cloud. THere are two main options for logging. 
+Customers often ask about the logging options with F5 Distributed Cloud. There are two main options for logging. 
 
-1. Global Logging - Logging related to activities that occur within Distributed cloud and on the Regional Edges such as load balancers or WAAP/Bot policy.
+1. Global Logging - Logging related to activities that occur within Distributed Cloud and on the Regional Edges such as load balancers or WAAP/Bot policy.
 
-2. Site Local Logging - Logging related to activities that occur within the Customer Edge Boundary such as load blanacers or WAAP/Bot policy runnning locally on an XC Node.
+2. Site Local Logging - Logging related to activities that occur within the Customer Edge Boundary such as load balancers or WAAP/Bot policies runnning locally on an XC Node.
 
 .. Note:: This is the last "Read Only" lab section. Our apologies for the inconvenience.
 
@@ -478,7 +478,7 @@ Customers often ask about the logging options with F5 Distributed Cloud. THere a
 
 To observe **(NOT configure)** the Global Logging configuration options, in the side-menu, browse to **Manage >> Log Management >> Global Log Receiver** and click **Add Global Log Receiver**.
 
-Take particular notice of the different **Log Types** and **Receiver Configurations** which include ASW, Azure and Splunk options to namedrop a few. 
+Take particular notice of the different **Log Types** and **Receiver Configurations** which include AWS, Azure and Splunk options to namedrop a few. 
 
 |
 
@@ -533,7 +533,6 @@ Sanity Check
 .. image:: ../images/lab2rev.png
 
 
+**We hope you enjoyed this lab!**
+
 **End of Lab 2**
-
-
-

@@ -372,4 +372,6 @@ Sanity Check
 
 |
 
+**We hope you enjoyed this lab!**
+
 **End of Lab 1**

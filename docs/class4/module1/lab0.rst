@@ -16,6 +16,8 @@ NOTE - Lab 1-3 are ready to test.
 Weirdness at end of Lab 3 load balancing - see screenshot in lab. mixed graphics from both sites when [Shift + refresh]
 
 3. Lab 4 - Work out internal load balancer issue (can't LB to azure ---troubleshoot) (Brad & Chas)
+4/19 note 12AM EST - Fixed 
+Still need to finish writing the end of this lab. 
 
 4. Lab 5 - Add resource to AWS workload (image, page whatever) for /aws. Add resource to Azure workoad for /azure (Chas)
 
