@@ -20,6 +20,7 @@ Weirdness at end of Lab 3 load balancing - see screenshot in lab. mixed graphics
 Still need to finish writing the end of this lab. 
 
 4. Lab 5 - Add resource to AWS workload (image, page whatever) for /aws. Add resource to Azure workoad for /azure (Chas)
+4/19 note 12AM EST - Will change narrative back to internal needing URI access since
 
 5. Determine best section to fill out with exploritory work. analytics, dashboard etc. (Brad)
 
