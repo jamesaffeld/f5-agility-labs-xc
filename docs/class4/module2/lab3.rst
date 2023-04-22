@@ -158,7 +158,7 @@ Your config should look like this:
 
 Leave everything else as **default** and click **Save and Exit**.
 
-Now that we have defined both of our Origin Server pools which are a public IP in AWS and a private IP in Azure, we will set up the App Connect Proxy to provide a Global Frontend to load balance them.
+Now that we have defined both of our Origin Server pools which are a public DNS Name in AWS and a private IP in Azure, we will set up the App Connect Proxy to provide a Global Frontend to load balance them.
 
 Global Frontend
 ----------------------------
