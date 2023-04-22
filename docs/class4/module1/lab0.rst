@@ -8,12 +8,17 @@ NOTE - Lab 1-3 are ready to test.
 **The following items need to be addressed as of 04/19/22**
 
 
-1. Weirdness at end of Lab 3 load balancing - see screenshot in lab. mixed graphics from both sites when [Shift + refresh]
+1. Weirdness at end of Lab 3 load balancing - see screenshot in lab. mixed graphics from both sites when [Shift + refresh] 
 
-2. Very end of Lab 4 needs an adjustemnet to the service policy steps.
+4/22 - Chas Aware and looking into it.  
+
+2. Very end of Lab 4 needs an adjustement to the service policy steps and add where to review deny logs
+
+4/22 - Will be complete by 11:59PM on 4/22
 
 4. Lab 5 - Add resource to AWS workload (image, page whatever) for /aws. Add resource to Azure workoad for /azure (Chas)
-4/19 note 12AM EST - Will change narrative back to internal needing URI access since
+
+4/22 -  Chas added resources, still need to test and add lab collateral.  Possible change narrative back to internal needing URI access.
 
 
 

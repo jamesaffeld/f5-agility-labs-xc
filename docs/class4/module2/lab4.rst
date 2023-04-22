@@ -89,7 +89,7 @@ Variable                          Value
 Select Where to Advertise         Site
 Site Network                      Outside Network (Since we only have 1 interface on our CE Node, it is "Outside" by default)
 Site Reference                    system/[animal-name]
-TCP Listen Port Choice            Leave default
+TCP Listen Port Choice            TCP Listen Port
 TCP Listen Port                   80
 ==============================    =========================================================
 
@@ -112,7 +112,7 @@ If that seemed easy, it's because it was. Now, you will test the load balancer t
 
 |
 
-From the Ubuntu Client **Web Shell** browser tab, type the following command and hit Enter. 
+From the Ubuntu Client (backend) **Web Shell** browser tab, type the following command and hit Enter. 
 
 curl http://10.1.1.5 
 
@@ -124,7 +124,7 @@ curl http://10.1.1.5
 
 Uh oh....! **404 Not Found**? But why? 
 
-Recall the mandatory **Domains** field that was required when you configured the HTTP load balancer. **XC App Connect HTTP Load Balancers DO NOT respond to requests without the expected Domain Name.**
+Recall the mandatory **Domains** field that was required when you configured the HTTP load balancer. **XC App Connect HTTP Load Balancers natively perform Domain Name enforcement and DO NOT respond to requests without the expected Domain Name.**
 
 |
 
@@ -144,7 +144,7 @@ curl \-\-head http://[animal-name]-backend-vip-to-azure.lab-mcn.f5demos.com \-\-
 
 |
 
-In my example, my animal-name was **wanted-swan**. If you want to see the full HTML of the site you can **up arrow** and run the command again without the **--head** flag.
+In my example, my animal-name was **wanted-swan**. If you want to see the full HTML of the site you can **up arrow** and run the command again without the **\-\-head** flag.
 
 curl  http://[animal-name]-backend-vip-to-azure.lab-mcn.f5demos.com --resolve [animal-name]-backend-vip-to-azure.lab-mcn.f5demos.com:80:10.1.1.5
 
@@ -165,7 +165,7 @@ You have met all the requirements thus far, but that phone call had a real sense
 Unfortunately, you don't have access to any of the workloads in the CSP environments but one of your friends over on the Application team recently let you know about a diagnostic tool they use on their AWS frontend. It's called the "In-Container-Diagnostic tool" and it runs on their AWS instance on port 8080. 
 They said you could use it if you need to test connectivity from the AWS frontend to the Azure frontend but they can't give you direct access to the container or workload itself. 
 
-"No problem" you reply, and quickly set out to configure a new frontend in XC for the Diag tool. After you expose the Diag tool, you will configure an internal load balancer for port 80 traffic between the AWS frontend and Azure frontend. 
+"No problem" you reply, and quickly set out to configure a new frontend in XC for the Diag tool. After you expose the Diag tool, you will configure and test via the Diag tool, an internal load balancer for port 80 traffic between the AWS frontend and Azure frontend. 
 
 |
 
@@ -200,7 +200,7 @@ Site                                    system/student-awsnet
 Select Network on the site              Inside
 ==================================      ==============
 
-Click **Save and Exit**. 
+Click **Apply** and the **Save and Exit**. 
 
 |
 
@@ -249,9 +249,9 @@ http://[animal-name]-awstool.lab-mcn.f5demos.com
 Create AWS to Azure LB
 ------------------------
 
-Now that we have a way to test connectivity between AWS and Azure all we need to do is setup the HTTP Load Balancer (App Connect Proxy)
+Now that we have a way to test connectivity between AWS and Azure all we need to do is setup the HTTP Load Balancer (App Connect Proxy) to provide the secure connectivity. 
 
-In the **Side menu** under **Manage** click on **Load Balancers** >> **HTTP Load Balancers** and click the **Add HTTP Load Balancer** button. 
+Back in XC Console, from the **Side menu** under **Manage** click on **Load Balancers** >> **HTTP Load Balancers** and click the **Add HTTP Load Balancer** button. 
 
 
 Enter the following values:
@@ -267,6 +267,8 @@ HTTP Port                               80
 Origin Pools                            **Add Item** and select [animal-name-azure-pool] and click **Apply**. 
 VIP Advertisement (at bottom)           **Custom** Click **Configure** See Below. 
 ==================================      ==============
+
+Under **List of Sites to Advertise**,  click **Add Item**. 
 
 **VIP Advertisement**
 
@@ -307,9 +309,9 @@ We will now use the In-Container Diag tool to test connectivity.
 
 If you don't already have a tab open to the Diag tool, in your browser go to: http://[animal-name]-awstool.lab-mcn.f5demos.com
 
-Click on **Run Command** and paste in the following: 
+Click on **Run Command** and paste in the following:: 
 
-curl  http://[animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com \-\-resolve [animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com:80:10.0.5.176
+    curl  http://[animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com --resolve [animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com:80:10.0.5.176
 
 |
 
@@ -317,9 +319,12 @@ curl  http://[animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com \-\-resolve [anim
 
 |
 
-Let's try that again but with the shorthand version by using **\-\-head**
+In just a few moments, you now have full proxy connectivity between IP Overlapped AWS and Azure resources over a private encrypted tunnel! Pretty sweet huh?
 
-curl \-\-head  http://[animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com \-\-resolve [animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com:80:10.0.5.176
+
+Let's try that command again but with the shorthand version by using **\-\-head**::
+
+    curl --head  http://[animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com --resolve [animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com:80:10.0.5.176
 
 |
 
@@ -327,17 +332,19 @@ curl \-\-head  http://[animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com \-\-reso
 
 |
 
-Head is one of many HTTP methods. Some other common ones are GET and POST. What if we we didn't want to allow **Head** or only allow certain HTTP methods? What if we wanted to block a geolocation? 
-What is we wanted to allow some IP's and disallow others? How about file type enforcement?
+Head is one of many HTTP methods. Some other common ones are GET and POST. What if we we didn't want to allow **Head** or only allow certain HTTP methods between these two workloads? 
+
+In general, for any of our HTTP Load Balancers, what if we wanted to block a geolocation? 
+What if we wanted to allow some IP's and disallow others? How about file type enforcements?
 
 **Service Policies to the Rescue!**
 
 Service Policies
 ------------------
 
-While Service Policies can do many things, we will go through a quick exercise to simply block the HTTP Method of **head** for our AWS to Azure HTTP Load Balancer. 
+While Service Policies can do many things, we will go through a quick exercise to simply block the HTTP Method of **head** for our AWS to Azure HTTP Load Balancer. This example could easily be expanded upon. 
 
-In the **Side menu** under **Security** click on **Service Policies** >> **Service Polices** and click the **Add Service Policy** button. 
+Back in XC Console, from the **Side menu** under **Security**, click on **Service Policies** >> **Service Policies** and click the **Add Service Policy** button. 
 
 ==================================      ==============
 Variable                                Value
@@ -370,6 +377,14 @@ Click **Apply**.
 
 |
 
+.. image:: ../images/sp1.png
+
+|
+
+Click **Apply**. 
+
+|
+
 .. image:: ../images/sp2.png
 
 |
@@ -379,7 +394,7 @@ Click **Save and Exit**.
 Apply Service Policy
 ---------------------
 
-In the **Side menu** under **Manage** click on **Load Balancers** >> **HTTP Load Balancers** and then click the **3 Button** Action Menu under your [animal-name]-aws-to-azure-lb
+In the **Side menu** under **Manage** click on **Load Balancers** >> **HTTP Load Balancers** and then click the **3 Button** Action Menu >> **Manage Configuration** under your **[animal-name]-aws-to-azure-lb**.
 
 Click **Edit Configuration** and scroll down to **Common Security Controls**. 
 

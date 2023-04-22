@@ -243,7 +243,7 @@ If you reached this page, you set it up right! Nice work.
 Hit **[Shift + Refresh]** a few times in your browser and make sure you are staying on the same site. You should NOT be seeing a **blue page** at any point. 
 
 
-In **XC Console**, navigate to **Manage >> Load Balancers >> Origin Pools**, click on the **3 Button** Actions Menu and choose **Manage Configuration** for your **[animal-name]-aws-pool. 
+In **XC Console**, navigate to **Manage >> Load Balancers >> Origin Pools**, click on the **3 Button** Actions Menu and choose **Manage Configuration** for your **[animal-name]-aws-pool**. 
 
 Click **Edit Configuration** in the upper right and then scroll to the bottom of the **AWS origin Servers** configuration screen. 
 
@@ -295,7 +295,7 @@ Currrently, you have a Global frontend [http://animal-name-acme-frontend.lab-mcn
 You are configured for Active/Standby load-balancing of the pools due to the priority setting in the pool. 
 
 
-In **XC Console**, navigate to **Manage >> HTTP Load Balancers**,  click on the **3 Button** Actions Menu and choose **Manage Configuration** for your **[animal-name]-acme-frontend. 
+In **XC Console**, navigate to **Manage >> HTTP Load Balancers**,  click on the **3 Button** Actions Menu and choose **Manage Configuration** for your **[animal-name]-acme-frontend**. 
 
 Click **Edit Configuration** in the upper right and then click the **pencil/edit** icon next to the Azure Origin Pool. 
 
@@ -323,7 +323,7 @@ Now that we've sent several requests to our shiny new **Globally Available Front
 
 In **XC Console** >> **Multi-Cloud App Connect** >> **Virtual Hosts** click on **HTTP Load Balancers**. 
 
-Click directly on your **[animal-name-scme-frontend]**.
+Click directly on your **[animal-name-acme-frontend]**.
 
 |
 
