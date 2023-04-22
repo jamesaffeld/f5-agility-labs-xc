@@ -11,6 +11,7 @@ NOTE - Lab 1-4 are complete and ready to test.
 1. Weirdness at end of Lab 3 load balancing - see screenshot in lab. mixed graphics from both sites when [Shift + refresh] 
 
 4/22 - Chas Aware and looking into it.  
+
 4/22- 3PM - Chas suggested using persistence. this does NOT fix the issue. tried several persistence types...provided feedback. 
 
 
@@ -25,19 +26,22 @@ ISSUE ARCHIVE
 ----------------
 
 Final Blueprint update (Chas & LeeAnn) 
+
 4/19 note 12AM EST - I added everything needed for this particular lab into the blueprint above (net-tools and persistent static route). BP was nominated and accepted.
 
 
 Lab 3 - End needs finished.  (Brad) 
+
 4/19 note 12AM EST - Finished with NOTE:
 
 Lab 4 - Work out internal load balancer issue (can't LB to azure ---troubleshoot) (Brad & Chas)
+
 4/19 note 12AM EST - Fixed 
 
 Determine best section to fill out with exploritory work. analytics, dashboard etc. (Brad)
 
 2. Very end of Lab 4 needs an adjustement to the service policy steps and add where to review deny logs
 
-4/22 - Will be complete by 11:59PM on 4/22
+4/22 - Will be complete by 11:59PM on 4/22 - Done
 
  
