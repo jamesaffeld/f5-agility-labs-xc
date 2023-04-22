@@ -134,9 +134,9 @@ Recall the mandatory **Domains** field that was required when you configured the
 
 We will now use a tool to help test this with a built-in "resolve" function. 
 
-From the Ubuntu Client **Web Shell** browser tab, type the following command **(with your animal-name)** and hit **Enter**. 
+From the Ubuntu Client **Web Shell** browser tab, type the following command **(with your animal-name)** and hit **Enter**.::
 
-curl \-\-head http://[animal-name]-backend-vip-to-azure.lab-mcn.f5demos.com \-\-resolve [animal-name]-backend-vip-to-azure.lab-mcn.f5demos.com:80:10.1.1.5
+    curl --head http://[animal-name]-backend-vip-to-azure.lab-mcn.f5demos.com --resolve [animal-name]-backend-vip-to-azure.lab-mcn.f5demos.com:80:10.1.1.5
 
 |
 
@@ -144,9 +144,9 @@ curl \-\-head http://[animal-name]-backend-vip-to-azure.lab-mcn.f5demos.com \-\-
 
 |
 
-In my example, my animal-name was **wanted-swan**. If you want to see the full HTML of the site you can **up arrow** and run the command again without the **\-\-head** flag.
+In my example, my animal-name was **wanted-swan**. If you want to see the full HTML of the site you can **up arrow** and run the command again without the **\-\-head** flag.::
 
-curl  http://[animal-name]-backend-vip-to-azure.lab-mcn.f5demos.com --resolve [animal-name]-backend-vip-to-azure.lab-mcn.f5demos.com:80:10.1.1.5
+    curl  http://[animal-name]-backend-vip-to-azure.lab-mcn.f5demos.com --resolve [animal-name]-backend-vip-to-azure.lab-mcn.f5demos.com:80:10.1.1.5
 
 |
 
@@ -344,12 +344,14 @@ Service Policies
 
 While Service Policies can do many things, we will go through a quick exercise to simply block the HTTP Method of **head** for our AWS to Azure HTTP Load Balancer. This example could easily be expanded upon. 
 
+When you create a **Service Policy** it intrinsically contains a **default deny**. Therefore, our Service Policy will actually be a definition of what is allowed. 
+
 Back in XC Console, from the **Side menu** under **Security**, click on **Service Policies** >> **Service Policies** and click the **Add Service Policy** button. 
 
 ==================================      ==============
 Variable                                Value
 ==================================      ==============
-Name                                    [animal-name-no-head-sp]
+Name                                    [animal-name-allow-get-sp]
 Server Selection                        Server Name
 Server Name                             [animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com
 Select Policy Rules                     Custom Rule List
@@ -361,19 +363,30 @@ Rules                                   **Configure**, Click **Add Item** > See 
 ==================================      ==============
 Variable                                Value
 ==================================      ==============
-Name                                    no-head
-Action                                  Deny
+Name                                    allow-get
+Action                                  Allow
 Clients                                 Any Client
-HTTP Method                             Head
+Servers                                 **Add Item** >> [animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com
+HTTP Method/Method List                 Get
+HTTP Path                               **Configure** >> **Add Item** add **/** under **Prefix Values**. 
 ==================================      ==============
 
-|
-
-.. image:: ../images/sphead.png
-
-|
-
 Click **Apply**. 
+
+|
+
+.. image:: ../images/prefix.png
+
+|
+
+
+|
+
+.. image:: ../images/spget.png
+
+|
+
+Scroll down and click **Apply**. 
 
 |
 
@@ -400,7 +413,7 @@ Click **Edit Configuration** and scroll down to **Common Security Controls**.
 
 Under **Service Policies**, hit the dropdown and choose, **Apply Specified Service Policies** and then click the blue **Configure**.
 
-Choose your **[animal-name]-sp** and click **Apply** and then **Save and Exit**. 
+Choose your **[animal-name]-allow-get-sp** and click **Apply** and then **Save and Exit**. 
 
 |
 
@@ -415,33 +428,93 @@ Test Service Policy
 
 If you don't already have a tab open to the Diag tool, in your browser go to: http://[animal-name]-awstool.lab-mcn.f5demos.com
 
-Try your curl command again with the **--head** flag. 
+Try your curl command again **without** the **--head** flag.:: 
 
-curl \-\-head  http://[animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com \-\-resolve [animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com:80:10.0.5.176
+    curl http://[animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com --resolve [animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com:80:10.0.5.176
+
+
+|
+
+.. image:: ../images/allowget.png
+
+
+|
+
+Now run the command again but insert the **\-\-head** command.::
+
+    curl --head  http://[animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com --resolve [animal-name]-aws-to-azure-lb.lab-mcn.f5demos.com:80:10.0.5.176
 
 |
 
 .. image:: ../images/forbid.png
 
-
 |
 
 
-***NEED TO FIX (Add default allow in SP). 
+You have now successfully configured an application layer **Service Policy** that enforces HTTP methods. 
 
-This tool uses internal DNS for resolution 
-curl \-\-head http://wanted-swan-aws-to-azure-lb.lab-mcn.f5demos.com \-\-resolve wanted-swan-aws-to-azure-lb.lab-mcn.f5demos.com:80:10.0.5.176
+.. Note:: This is a primitive example of a much more powerful construct that can be used to enforce, secure and manipulate HTTP traffic much like iRules did on F5's classic BIG-IP platform. 
+
+Review Service Policy Logs
+---------------------------
+
+Back in XC Console, from the **Side menu** under **Virtual Hosts** click on **HTTP Load Balancers** and then click on your **[animal-name]-aws-to-azure-lb**.
 
 
-10.0.5.176
+|
 
-echo "159.60.128.61 awstool.lab-mcn.f5demos.com" | sudo tee -a /etc/hosts
+.. image:: ../images/awstoazure.png
 
+|
 
+Take a moment to observe some of the analytics and then click on the **Requests** tab at the top of the page. 
+
+|
+
+.. image:: ../images/requesttab.png
+
+|
+
+Here you will find the full request log. You will see the request path as well as the response code given back to the client. 
+You may have to click refresh in the upper right or change your time frame if you took a break or don't see any data. 
+
+|
+
+.. image:: ../images/perfmon.png
+
+|
+
+**Expand** one of the log entries that had a **403** response code. These were the forbidden **Head** requests. 
+Look through the request data and determine the policy that was applied to the request as well as the **result**. 
+
+|
+
+.. image:: ../images/403.png
+
+|
+
+**Expand** one of the log entries that had a **200** response code. These were the allowed **Get** requests. 
+Look through the request data and determine the policy that was applied to the request as well as the **result**. 
+
+|
+
+.. image:: ../images/200.png
+
+|
+
+**Great job! You have now quickly completed every requirement thrown at you with F5 Distributed Cloud App Connect and Network Connect concepts.**
+
+There is a final bonus lab that will showcase some App Layer Routing and Security Concepts as well. 
 
 Sanity Check
 -------------
 **This is what you just deployed.**
+
+|
+
+.. image:: ../images/lab4review.png
+
+|
 
 
 **We hope you enjoyed this lab!**

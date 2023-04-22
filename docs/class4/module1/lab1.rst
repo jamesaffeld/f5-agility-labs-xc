@@ -66,7 +66,7 @@ You will be able to access all services, but making use of personas can focus yo
 Click on **"Account Settings"** by expanding the **"Account"** icon in the top right of the screen and clicking on **"Account Settings".**  
 In the resulting window you can observe the **Work domains and skill level** section and other administrative functions.
    
-.. note:: *For the purposes of this lab, permissions have been restricted to lab operations.  As some menus will be locked and not visible.*
+.. note:: **For the purposes of this lab, permissions have been restricted to lab operations.  As some menus will be locked and not visible.**
 |
 
 .. image:: ../images/intro1.png 
