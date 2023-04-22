@@ -3,7 +3,7 @@ Lab 2: Configuring Network Connect (L3/L4 Routing Firewall )
 
 **Objective:**
 
-*Verify the XC Nodes health. 
+*Verify the XC Node's health. 
 
 *Configure Network Connect to connect the Data Center network to the AWS Network.
 
@@ -19,7 +19,7 @@ After the setup is complete, you will test connectivity and configure network se
 
 |
 
-Verify the XC Node Health
+Verify the XC Node's Health
 ---------------------------
 
 If you are not already logged into the console, please do so now by opening the following URL in your browser: 
@@ -64,7 +64,7 @@ These are the closest Regional Edge sites based on the latitude and longitude in
 
 |
 
-Look at the top left-hand corner where you see Form, Documentation and JSON. **You will see these fields throughout the Distributed Cloud console configuration menus.**
+Look at the top left-hand corner where you see Form, Documentation and JSON. **You will see these fields throughout the Distributed Cloud Console configuration menus.**
 
 
 .. Important:: Distributed Cloud is built with an API-first strategy. All the configurations can be done via GUI or API calls. 
@@ -125,7 +125,7 @@ Configuring Network Connect
 In our lab today, an Ubuntu Server in the UDF environment will simulate the backend. 
 The AWS frontend workload is already deployed along with an XC Node to extend the Customer Edge in the AWS cloud. 
 
-.. NOTE:: The Data Center backend has a pre-existing route to 10.0.3.0/24 and it points to the inside interface of the Data Center XC Node.  The AWS workload has a route to 10.1.1.0/24 that points to the inside interface of the AWS XC Node. 
+.. NOTE:: The Data Center backend has a pre-existing route to 10.0.3.0/24 and it points to the single outside interface of the Data Center XC Node.  The AWS workload has a route to 10.1.1.0/24 that points to the inside interface of the AWS XC Node. 
 
 
 .. image:: ../images/netconnlab.png
@@ -263,7 +263,7 @@ From your UDF environment browser tab,  click on **Access >> Web Shell** on the 
 
 Type **ping 10.0.3.253** and hit **Enter**. You **WILL NOT** get a response. 
 
-Back in the XC Console, navigate to **Multi-Cloud Network Connect >> Site List** and find **"your animal name"**
+Back in the XC Console, navigate to **Multi-Cloud Network Connect >> Sites >> Site List** and find **"your animal name"**
 Click the **3 buttons** under the **Action Menu** under **"your animal name"** and select **Manage Configuration**. 
 
 In the top right click **Edit Configuration**. 
@@ -305,7 +305,7 @@ Check back on your web shell tab with the ping going. Success!!
 .. important:: If you want to tear down this connectivity it is as easy as removing the label. 
 
 
-In XC Console, navigate to **Multi-Cloud Network Connect**, click on **Site List**, click directly on **"your animal name"** and finally click on the **Tools** menu on the top, far right. 
+In XC Console, navigate to **Multi-Cloud Network Connect** >> **Sites** click on **Site List**, click directly on **"your animal name"** and finally click on the **Tools** menu on the top, far right. 
 
 Click on **Show Routes** 
 
@@ -338,7 +338,7 @@ Go back to the web shell where you ran a ping. We will now test 2 ports that we 
 
 **Port 8080** - Diagnostic tool
 
-Our first test will be to port 80. In the web shell type: **curl --head http://10.0.3.253** 
+Our first test will be to port 80. In the web shell type: **curl \-\-head http://10.0.3.253** 
 
 |
 
@@ -346,7 +346,7 @@ Our first test will be to port 80. In the web shell type: **curl --head http://1
 
 |
 
-Next, push the keyboard "up arrow " and run the same command but targeted at port 8080 like this: **curl --head http://10.0.3.253:8080** 
+Next, push the keyboard "up arrow " and run the same command but targeted at port 8080 like this: **curl \-\-head http://10.0.3.253:8080** 
 
 |
 
@@ -510,7 +510,7 @@ Click **Cancel and Exit** and Discard any changes.
 
 To observe **(NOT configure)** the application of the Site Local Logging profile, browse to **Manage >> Site Management >> Fleets**, click the **3 button** Action menu and click **Manage Configuration**. 
 
-Scroll down to observe the **Logs Streaming** field under **Advanced Configuration**. In production you would apply enable this and select your **Log Receiver** profile.
+Scroll down to observe the **Logs Streaming** field under **Advanced Configuration**. Outside of the lab environment, you would enable this and select your **Log Receiver** profile.
 
 |
 
@@ -523,7 +523,7 @@ Click **Cancel and Exit**.
 
 You can now feel free to explore the **Multi-Cloud Network Connect** Site menus while everyone is getting caught up. 
 
-Click on **Site Map**, **Site Security**, which is where we would review our firewall logs in production, and finally, head down to the **Service Info** Section and click on **About**. 
+Click on **Site Map**, **Site Security**, which is where we would review our firewall logs in "real world", and finally, head down to the **Service Info** Section and click on **About**. 
 
 
 Sanity Check

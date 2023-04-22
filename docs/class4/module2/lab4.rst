@@ -20,7 +20,7 @@ Lab 4: App Connect - Solving IP Overlap
 **Narrative:** 
 
 Now that the globally available frontend has been deployed, it's time to start working on **Deliverable #2** and configure backend connectivity. Since Network Connect does **NOT** support IP overlap, we will configure the XC Nodes with App Connect proxies. 
-Recall that Network Connect, connects networks by using the XC Nodes as SD Routers and App Connect uses the XC Nodes as SD Proxies to connect applications. NetworkAAS or ProxyAAS. 
+Recall that Network Connect, connects networks by using the XC Nodes as Software-Defined Routers and App Connect uses the XC Nodes as Software-Defined Proxies to connect applications. Think...NetworkAAS or ProxyAAS. 
 
 |
 
@@ -379,9 +379,9 @@ Click **Save and Exit**.
 Apply Service Policy
 ---------------------
 
-In the **Side menu** under **Manage** click on **Load Balancers** >> **HTTP Load Balancers** and then clcik the **3 Button** Action Menu under your [animal-name]-aws-to-azure-lb
+In the **Side menu** under **Manage** click on **Load Balancers** >> **HTTP Load Balancers** and then click the **3 Button** Action Menu under your [animal-name]-aws-to-azure-lb
 
-Click **Edit Configuration** and scroll down to **COmmon Security Controls**. 
+Click **Edit Configuration** and scroll down to **Common Security Controls**. 
 
 Under **Service Policies**, hit the dropdown and choose, **Apply Specified Service Policies** and then click the blue **Configure**.
 

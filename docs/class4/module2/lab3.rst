@@ -23,7 +23,7 @@ Lately the site has been getting pounded with traffic and frontend security has 
 You think to yourself, this is going to be tricky, and reach out to your trusted F5 Solutions Engineer to see how this will work with Distributed Cloud. 
 
 Your F5 Solutions Engineer explains that IP overlap between sites is a common problem and one that can be easily solved with Distributed Cloud App Connect. 
-App Connect alleviates this problem by leveraging the XC Nodes as Software Defined proxies rather than SD Routers as they were configured with Network Connect.
+App Connect alleviates this problem by leveraging the XC Nodes as Software-Defined roxies rather than Software-Defined Routers as they were configured with Network Connect.
 
 Also, you are informed that by using F5 Distributed Cloud Regional Edges for the frontend workloads, you will be able to have full proxy visibility and analytics for the client traffic so the Security team will be pleased. 
 
@@ -64,9 +64,9 @@ Notice **your animal name** CE Node is available for App Connect configurations 
 
 What does this really mean? 
 
-With **Network Connect** you connected routed networks with your CE Node which acted as a SD-Router. 
+With **Network Connect** you connected routed networks with your CE Node which acted as a Software-Defined Router. 
 
-Now with **App Connect** you will be configuring our Regional Edges and your CE Nodes as SD-Proxies to provide connectivity between workloads. The CE's can do both functions simultaneously!!  
+Now with **App Connect** you will be configuring our Regional Edges and your CE Nodes as Sofware-Defined-Proxies to provide connectivity between workloads. The CE's can do both functions simultaneously!!  
 
 In the **Side menu** under **Manage** click on **Load Balancers** >> **Origin Pools** and click the **Add Origin Pool** button. 
 
@@ -141,7 +141,6 @@ Hit the dropdown for **Select Type of Origin Server** and choose **IP Address of
 Variable                        Value
 ==============================  =====
 IP                              10.0.3.253 (Note: this is not a typo. The CSP workloads have IP overlap)
-Origin Server Port              80
 Site or Virtual Site            Site
 Site:                           **system/student-azurenet**
 Select Network on the site      Inside Network
@@ -296,7 +295,7 @@ Currrently, you have a Global frontend [http://animal-name-acme-frontend.lab-mcn
 You are configured for Active/Standby load-balancing of the pools due to the priority setting in the pool. 
 
 
-In **XC Console**, navigate to **Manage >> Load Balancers**,  click on the **3 Button** Actions Menu and choose **Manage Configuration** for your **[animal-name]-acme-frontend. 
+In **XC Console**, navigate to **Manage >> HTTP Load Balancers**,  click on the **3 Button** Actions Menu and choose **Manage Configuration** for your **[animal-name]-acme-frontend. 
 
 Click **Edit Configuration** in the upper right and then click the **pencil/edit** icon next to the Azure Origin Pool. 
 
