@@ -30,7 +30,40 @@ They have asked if there is a way to apply security policy to identify and remed
 L7 App Routing
 ---------------
 
-Adding Layer 7 App Routing with F5 Distributed Cloud is a simple task. 
+Adding Layer 7 App Routing with F5 Distributed Cloud is a simple task but one thing we haven't done yet is configure an **interna** pool for the **AWS** workload. So far we have been pointing at a public DNS name in the AWS Origin pool so that could in theory change or resolve to different IP's at different times. 
+What we want is essentially a static proxy into the AWS environment this one particular frontend is located in which is also where our CE Node is deployed.
+
+In the **Side menu** under **Manage** click on **Load Balancers** >> **Origin Pools** and click **Manage Configuration** under the **3 Button** Action Menu on your **[animal-name]-azure-pool**. 
+
+Cick **Clone Object.**
+
+|
+
+.. image:: ../images/clone.png
+
+|
+
+For the name call it: **[animal-name]-aws-internal** and click the pencil **edit** icon next to the **Origin Server**. 
+
+|
+
+.. image:: ../images/edit.png
+
+|
+
+Simply change the **Site** from **system/student-azurenet** to **system/student-awsnet**. 
+
+|
+
+.. image:: ../images/edit.png
+
+|
+
+Click **Apply** and **Save and Exit**. 
+
+
+START HERE:
+
 
 In the **Side menu** under **Manage** click on **Load Balancers** >> **HTTP Load Balancers** and click on the **3 Buttons** under the **Actions** menu for your **animal-name-acme-frontend**.
 
