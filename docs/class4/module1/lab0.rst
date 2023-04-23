@@ -5,19 +5,14 @@ NEW Blueprint: Agility 2023 - F5 XC - Intro to MCN https://udf.f5.com/b/e7b1b7be
 
 NOTE - Lab 1-4 are complete and ready to test. 
 
-**The following items need to be addressed as of 04/22/22 3PM**
+**The following items need to be addressed as of 04/22/22 10PM**
 
+1. CE registration permission issues continue to plague testers. (manual process until script kicks in monday)
 
-1. Weirdness at end of Lab 3 load balancing - see screenshot in lab. mixed graphics from both sites when [Shift + refresh] 
-
-4/22 - Chas Aware and looking into it.  
+2. Weirdness at end of Lab 3 load balancing - see screenshot in lab. mixed graphics from both sites when [Shift + refresh] 
 
 4/22- 3PM - Chas suggested using persistence. this does NOT fix the issue. tried several persistence types...provided feedback. 
 
-
-4. Lab 5 - Add resource to AWS workload (image, page whatever) for /aws. Add resource to Azure workoad for /azure (Chas)
-
-4/22 -  Chas added resources, still need to test and add lab collateral.  Possible change narrative back to internal needing URI.
 
 
 
@@ -28,7 +23,6 @@ ISSUE ARCHIVE
 Final Blueprint update (Chas & LeeAnn) 
 
 4/19 note 12AM EST - I added everything needed for this particular lab into the blueprint above (net-tools and persistent static route). BP was nominated and accepted.
-
 
 Lab 3 - End needs finished.  (Brad) 
 
@@ -44,4 +38,10 @@ Determine best section to fill out with exploritory work. analytics, dashboard e
 
 4/22 - Will be complete by 11:59PM on 4/22 - Done
 
+
+4. Lab 5 - Add resource to AWS workload (image, page whatever) for /aws. Add resource to Azure workoad for /azure (Chas)
+
+4/22 -  Chas added resources, still need to test and add lab collateral.  Possible change narrative back to internal needing URI.
+
+3. Lab 5 - 4/22- 10PM 70% complete. Bot Defense is disabled for tenant. Need to enable to show bot defense profile. Final note - bot cut from lab 
  

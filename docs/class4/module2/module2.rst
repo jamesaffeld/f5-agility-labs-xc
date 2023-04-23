@@ -21,7 +21,7 @@ The frontend server in Azure WILL NOT have a public IP. ACME has truly gone mult
 **In Lab 4** we will solve the IP overlap problem introduced by the Azure acquisition by leveraging App Connect. 
 
 **In Lab 5** we are offering a bonus App Connect, "Application Routing" lab, where requests from Internet Clients will be routed to AWS or Azure frontend based on URI. You will also 
-be configuring application security policy on the globally available frontend load balancer in XC. 
+be configuring application security policy on the globally available frontend load balancer in XC to portect against OWASP Top 10 attacks. 
 
 .. toctree::
    :maxdepth: 1
