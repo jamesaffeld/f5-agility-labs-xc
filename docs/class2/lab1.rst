@@ -60,7 +60,7 @@ steps will define an application, register its DNS and assign a target as an ori
 |                                                                                              |
 |    data. Values where **<namespace>** is required, use the name of your given namespace.     |
 |                                                                                              |
-|    * **Metadata:Name ID:**  *<namespace>-lb*                                                 |
+|    * **Metadata:Name:**  *<namespace>-lb*                                                 |
 |    * **Basic Configuration: List of Domains:** *<namespace>.lab-sec.f5demos.com*             |
 |    * **Basic Configuration: Select Type of Load Balancer:** *HTTP*                           |
 |    * **Basic Configuration: Automatically Manage DNS Records:** *(Check the checkbox)*       |
@@ -471,9 +471,8 @@ review the generated event data to make additional configuration changes.
 |                                                                                              |
 |     the exclusion should expire. (helpful when testing/validating). the format should be as  |
 |                                                                                              |
-|     shown *YYYY-MM-DD HH:MM:SS+00:00 (2023-05-30T01:21:00+00:00)*. **HH** must be in 24 hour |
-|                                                                                              |
-|     format (there is no AM/PM).                                                              |
+|     shown *YYYY-MM-DD**T**HH:MM:SS+00:00 (2023-05-30T01:21:00+00:00)*. **T** character       |
+|     separates the date from time. **HH** must be in 24 hour format (there is no AM/PM).      |
 |                                                                                              |
 | 31. Click **Apply** when complete.                                                           |
 +----------------------------------------------------------------------------------------------+
