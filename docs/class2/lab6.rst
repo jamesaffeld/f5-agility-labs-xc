@@ -21,10 +21,12 @@ version control features.
 +----------------------------------------------------------------------------------------------+
 | 1. For the next series of steps, to download the JSON/OpenAPI spec file **app-api-v1.json**  |
 |                                                                                              |
-|    **app-api-v1.json** to your local desktop or workspace.                                   |
+|    to your local desktop or workspace.                                                       |
 |                                                                                              |
 |    Link::                                                                                    |
 |      http://demo-app.amer.myedgedemo.com/lab/app-api-v1.json                                 |
+|                                                                                              |
+|    Note: some browsers will thrown a warning for downloading a dangerous file type.          |
 +----------------------------------------------------------------------------------------------+
 
 +----------------------------------------------------------------------------------------------+
