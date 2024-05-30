@@ -237,12 +237,9 @@ configuration changes.
    Balancer configuration: **http://<namespace>.lab-sec.f5demos.com**, to confirm
    it is functional.
 
-#. Using some of the sample attacks below, add the URI path & variables to your
+#. Using the sample attack below, add the URI path & variables to your
    application to generate security event data.
 
-   * ``/?cmd=cat%20/etc/passwd``
-   * ``/product?id=4%20OR%201=1``
-   * ``/../../../../etc/shadow``
    * ``/cart?search=aaa'><script>prompt('Please+enter+your+password');</script>``
 
 #. In the resulting block screens, note the **URL** and the **Support ID**.
