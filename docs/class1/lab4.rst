@@ -49,7 +49,7 @@ The following steps will demonstrate where DNS features are configured within th
 Cloud Console.  This task reviews where to configure Primary and Secondary DNS for a zone.
 
 +----------------------------------------------------------------------------------------------+
-| 1. In the left-hand navigation menu, under the **Manage** section click the **DNS**          |
+| 1. In the left-hand navigation menu, under the **Manage** section click the **DNS Zone**     |
 |                                                                                              |
 |    **Management** link.                                                                      |
 |                                                                                              |
