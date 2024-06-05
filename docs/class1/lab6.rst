@@ -185,7 +185,7 @@ You can also select it from the left drop-down menu.
      
 #. With the advanced options configured, we can now retest/refresh the application to see the new results. 
 
-#. Now you will see the 'hits' counter increase.
+#. Now you will see the 'hits' counter increase. There may be a significant lag of up to 5 minutes as the updated configuration is deployed. There is also latency between stats collection and display. 
 
      .. image:: _static/lab6-032.PNG
 
